@@ -2,6 +2,7 @@
 
 {
   imports = [
+    ./config/bat.nix
     ./config/git.nix
   ];
 
