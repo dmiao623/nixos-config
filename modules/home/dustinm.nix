@@ -1,6 +1,10 @@
-{ config, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 
 {
+  imports = [
+    ./config/git.nix
+  ];
+
   home.username = "dustinm";
   home.homeDirectory = "/home/dustinm";
   home.stateVersion = "25.11";
