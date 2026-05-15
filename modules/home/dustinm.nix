@@ -8,6 +8,7 @@
     ./config/qutebrowser.nix
     ./config/secrets.nix
     ./config/kitty.nix
+    ./config/kanata.nix
   ];
 
   home.username = "dustinm";

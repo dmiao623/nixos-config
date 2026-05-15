@@ -29,10 +29,13 @@
     LC_TIME = "en_US.UTF-8";
   };
 
+  # required for Kanata service to access keyboard hardware
+  hardware.uinput.enable = true;
+
   users.users.dustinm = {
     isNormalUser = true;
     description = "Dustin Miao";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "input" "uinput" ];
   };
 
   # This value determines the NixOS release from which the default
