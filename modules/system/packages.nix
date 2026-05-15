@@ -13,6 +13,7 @@
     neofetch
     qutebrowser
     ripgrep
+    tree
     unzip
     uv
     vim
