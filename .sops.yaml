@@ -1,5 +1,5 @@
 keys:
-  - &dustinm_nixos AGE_RECIPIENT_FILLED_DURING_BOOTSTRAP
+  - &dustinm_nixos age105a2qzgh5n496ccgueux6t3y2l0jxk73c26l3xhyg7f8t2xzcsts6d0g28
 creation_rules:
   - path_regex: secrets/.*\.yaml$
     key_groups:
