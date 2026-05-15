@@ -9,6 +9,7 @@
     curl
     git
     htop
+    kitty
     neofetch
     qutebrowser
     ripgrep

@@ -7,6 +7,7 @@
     ./config/git.nix
     ./config/qutebrowser.nix
     ./config/secrets.nix
+    ./config/kitty.nix
   ];
 
   home.username = "dustinm";
