@@ -7,12 +7,6 @@
     age.sshKeyPaths = [ "${config.home.homeDirectory}/.ssh/id_ed25519" ];
 
     secrets."git/email" = { };
-    secrets."tokens/github" = {
-      path = "${config.home.homeDirectory}/.config/secrets/github_token";
-    };
-    secrets."tokens/anthropic" = {
-      path = "${config.home.homeDirectory}/.config/secrets/anthropic_token";
-    };
 
     templates."git-user-include".content = ''
       [user]
