@@ -4,6 +4,7 @@
   imports = [
     ./config/bat.nix
     ./config/git.nix
+    ./config/qutebrowser.nix
   ];
 
   home.username = "dustinm";
