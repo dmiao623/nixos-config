@@ -35,6 +35,10 @@
   # required to satisfy system check for `shell = pkgs.zsh` below
   programs.zsh.enable = true;
 
+  # required packages for unpatched dynamic binaries
+  programs.nix-ld.enable = true;
+  programs.nix-ld.libraries = with pkgs; [ ];
+
   users.users.dustinm = {
     isNormalUser = true;
     description = "Dustin Miao";

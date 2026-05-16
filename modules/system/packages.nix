@@ -19,7 +19,6 @@
     unzip
     uv
     vim
-    vscode
     wget
   ];
 }
