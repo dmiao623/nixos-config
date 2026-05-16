@@ -22,6 +22,8 @@
           "**/__pycache__/" = true;
         };
         "git.autofetch" = true;
+        "git.confirmSync" = false;
+        "git.suggestSmartCommit" = false;
         "editor.fontFamily" = "'FiraCode Nerd Font Mono'";
         "editor.fontSize" = 16;
         "editor.fontLigatures" = true;
