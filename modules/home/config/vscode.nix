@@ -22,6 +22,7 @@
 
       userSettings = {
         "chat.disableAIFeatures" = true;
+        "claudeCode.preferredLocation" = "panel";
         "files.autoSave" = "onFocusChange";
         "files.exclude" = {
           "**/.venv/" = true;
