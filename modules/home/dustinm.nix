@@ -3,13 +3,15 @@
 {
   imports = [
     inputs.sops-nix.homeManagerModules.sops
+    ./config/secrets.nix
+
     ./config/bat.nix
     ./config/git.nix
     ./config/qutebrowser.nix
-    ./config/secrets.nix
     ./config/kitty.nix
     ./config/kanata.nix
     ./config/vscode.nix
+    ./config/zsh.nix
   ];
 
   home.username = "dustinm";
