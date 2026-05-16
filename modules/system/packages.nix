@@ -7,9 +7,11 @@
     bat
     claude-code
     curl
+    eza
     git
     htop
     kitty
+    lf
     neofetch
     qutebrowser
     ripgrep
