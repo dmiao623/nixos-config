@@ -32,10 +32,14 @@
   # required for Kanata service to access keyboard hardware
   hardware.uinput.enable = true;
 
+  # required to satisfy system check for `shell = pkgs.zsh` below
+  programs.zsh.enable = true;
+
   users.users.dustinm = {
     isNormalUser = true;
     description = "Dustin Miao";
     extraGroups = [ "networkmanager" "wheel" "input" "uinput" ];
+    shell = pkgs.zsh;
   };
 
   # This value determines the NixOS release from which the default
