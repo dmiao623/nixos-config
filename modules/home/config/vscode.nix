@@ -8,7 +8,6 @@
       extensions = with pkgs.vscode-extensions; [
         anthropic.claude-code
         jeff-hykin.better-nix-syntax
-        enkia.tokyo-night
         vscode-icons-team.vscode-icons
         vscodevim.vim
       ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
