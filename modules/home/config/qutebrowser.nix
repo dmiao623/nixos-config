@@ -1,5 +1,20 @@
 { config, lib, pkgs, ... }:
 
+let
+  quickmarksJqScript = pkgs.writeText "flatten-quickmarks.jq" ''
+    def flat(prefix):
+      to_entries[] |
+      if .key == "_url" then
+        prefix + " " + .value
+      elif (.value | type) == "string" then
+        ((if prefix == "" then "" else prefix + " " end) + .key) + " " + .value
+      else
+        (if prefix == "" then .key else prefix + " " + .key end) as $newprefix |
+        .value | flat($newprefix)
+      end;
+    [flat("")] | sort[]
+  '';
+in
 {
   programs.qutebrowser = {
     enable = true;
@@ -413,4 +428,18 @@
       # c.colors.webpage.bg = 'white'
     '';
   };
+
+  sops.secrets."qutebrowser/quickmarks" = {
+    sopsFile = ../../../secrets/quickmarks.json;
+    format = "binary";
+  };
+
+  home.activation.generateQuickmarks = lib.hm.dag.entryAfter [ "sopsNix" ] ''
+    secret_path="${config.sops.secrets."qutebrowser/quickmarks".path}"
+    if [ -f "$secret_path" ]; then
+      mkdir -p "${config.home.homeDirectory}/.config/qutebrowser"
+      ${pkgs.jq}/bin/jq -r -f "${quickmarksJqScript}" "$secret_path" \
+        > "${config.home.homeDirectory}/.config/qutebrowser/quickmarks"
+    fi
+  '';
 }
