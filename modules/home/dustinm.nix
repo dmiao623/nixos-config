@@ -9,6 +9,7 @@
     ./config/secrets.nix
     ./config/kitty.nix
     ./config/kanata.nix
+    ./config/vscode.nix
   ];
 
   home.username = "dustinm";
