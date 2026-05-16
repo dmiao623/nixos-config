@@ -11,6 +11,13 @@
         enkia.tokyo-night
         vscode-icons-team.vscode-icons
         vscodevim.vim
+      ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
+        {
+          name = "sonokai";
+          publisher = "sainnhe";
+          version = "0.2.9";
+          sha256 = "sha256-5b3XPCH6h8FYVyn6Iws2j7lIwHSaQE5glaBnmhGErIk=";
+        }
       ];
 
       userSettings = {
@@ -31,7 +38,7 @@
         "extensions.autoUpdate" = false;
         "extensions.autoCheckUpdates" = false;
         "vim.useSystemClipboard" = true;
-        "workbench.colorTheme" = "Tokyo Night Light";
+        "workbench.colorTheme" = "Sonokai Shusia";
         "workbench.iconTheme" = "vscode-icons";
       };
     };
