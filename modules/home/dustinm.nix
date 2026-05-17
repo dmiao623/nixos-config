@@ -9,6 +9,7 @@
     ./config/git.nix
     ./config/qutebrowser.nix
     ./config/kitty.nix
+    ./config/hyprland.nix
     ./config/kanata.nix
     ./config/vscode.nix
     ./config/zsh.nix

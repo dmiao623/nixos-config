@@ -1,9 +1,18 @@
 { config, pkgs, ... }:
 
 {
-  services.xserver.enable = true;
-  services.displayManager.sddm.enable = true;
-  services.desktopManager.plasma6.enable = true;
+  programs.hyprland.enable = true;
+  programs.hyprland.withUWSM = true;
+
+
+
+  services.greetd = {
+    enable = true;
+    settings.default_session = {
+      command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd Hyprland";
+      user = "greeter";
+    };
+  };
 
   services.xserver.xkb = {
     layout = "us";
@@ -24,6 +33,6 @@
 
   services.libinput = {
     enable = true;
-    touchpad.naturalScrolling = false;
+    touchpad.naturalScrolling = true;
   };
 }
