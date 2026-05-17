@@ -11,6 +11,7 @@
     bat
     claude-code
     curl
+    discord
     eza
     git
     htop
@@ -19,6 +20,7 @@
     neofetch
     qutebrowser
     ripgrep
+    spotify
     tree
     unzip
     uv
