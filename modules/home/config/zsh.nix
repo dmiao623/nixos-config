@@ -16,7 +16,7 @@
     history = {
       append                = true;
       save                  = 1000;
-      size                  = 999;
+      size                  = 1000;
       findNoDups            = true;
       saveNoDups            = false;
       ignoreDups            = true;
