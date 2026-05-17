@@ -8,10 +8,10 @@
       process-unmapped-keys yes
     )
     (defsrc
-      caps bspc rsft
+      caps bspc rsft lmet lalt
     )
     (deflayer default
-      bspc caps esc
+      bspc caps esc lalt lmet
     )
   '';
 
