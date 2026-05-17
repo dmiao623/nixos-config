@@ -29,7 +29,7 @@
           window-rewrite = {
             "class<kitty>" = "󰆍";
             "class<firefox>" = "󰈹";
-            "class<qutebrowser>" = "󰇧";
+            "class<org.qutebrowser.qutebrowser>" = "󰖟";
             "class<Code>" = "󰨞";
             "class<code>" = "󰨞";
             "class<dolphin>" = "󰉋";
