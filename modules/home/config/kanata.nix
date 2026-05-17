@@ -13,6 +13,13 @@
     (deflayer default
       bspc caps esc lalt lmet
     )
+    (defoverrides
+      (lmet c) (lctl c)
+      (lmet v) (lctl v)
+      (lmet a) (lctl a)
+      (lmet x) (lctl x)
+      (lmet z) (lctl z)
+    )
   '';
 
   systemd.user.services.kanata = {

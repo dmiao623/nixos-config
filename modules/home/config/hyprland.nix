@@ -32,8 +32,8 @@
         "$mod, D, exec, fuzzel"
         "$mod, E, exec, dolphin"
         "$mod, F, fullscreen"
-        "$mod, V, togglefloating"
         "$mod SHIFT, E, exit"
+
 
         # Move focus
         "$mod, H, movefocus, l"
@@ -48,26 +48,28 @@
         "$mod SHIFT, J, movewindow, d"
 
         # Workspaces
-        "$mod, 1, workspace, 1"
-        "$mod, 2, workspace, 2"
-        "$mod, 3, workspace, 3"
-        "$mod, 4, workspace, 4"
-        "$mod, 5, workspace, 5"
-        "$mod, 6, workspace, 6"
-        "$mod, 7, workspace, 7"
-        "$mod, 8, workspace, 8"
-        "$mod, 9, workspace, 9"
+        "CTRL, ampersand, workspace, 1"
+        "CTRL, bracketleft, workspace, 2"
+        "CTRL, braceleft, workspace, 3"
+        "CTRL, braceright, workspace, 4"
+        "CTRL, parenleft, workspace, 5"
+        "CTRL, equal, workspace, 6"
+        "CTRL, asterisk, workspace, 7"
+        "CTRL, parenright, workspace, 8"
+        "CTRL, plus, workspace, 9"
+        "CTRL, bracketright, workspace, 10"
 
         # Move to workspace
-        "$mod SHIFT, 1, movetoworkspace, 1"
-        "$mod SHIFT, 2, movetoworkspace, 2"
-        "$mod SHIFT, 3, movetoworkspace, 3"
-        "$mod SHIFT, 4, movetoworkspace, 4"
-        "$mod SHIFT, 5, movetoworkspace, 5"
-        "$mod SHIFT, 6, movetoworkspace, 6"
-        "$mod SHIFT, 7, movetoworkspace, 7"
-        "$mod SHIFT, 8, movetoworkspace, 8"
-        "$mod SHIFT, 9, movetoworkspace, 9"
+        "CTRL SHIFT, ampersand, movetoworkspace, 1"
+        "CTRL SHIFT, bracketleft, movetoworkspace, 2"
+        "CTRL SHIFT, braceleft, movetoworkspace, 3"
+        "CTRL SHIFT, braceright, movetoworkspace, 4"
+        "CTRL SHIFT, parenleft, movetoworkspace, 5"
+        "CTRL SHIFT, equal, movetoworkspace, 6"
+        "CTRL SHIFT, asterisk, movetoworkspace, 7"
+        "CTRL SHIFT, parenright, movetoworkspace, 8"
+        "CTRL SHIFT, plus, movetoworkspace, 9"
+        "CTRL SHIFT, bracketright, movetoworkspace, 10"
       ];
 
       # Mouse binds
@@ -76,10 +78,23 @@
         "$mod, mouse:273, resizewindow"
       ];
 
+
+      # Touchpad gestures
+      gesture = [ "3, horizontal, workspace" ];
+
       exec-once = [
         "waybar"
+        "swaybg -i ${../../../assets/wallpaper.jpg} -m fill"
       ];
     };
+  };
+
+
+  home.pointerCursor = {
+    name = "Adwaita";
+    package = pkgs.adwaita-icon-theme;
+    size = 24;
+    gtk.enable = true;
   };
 
   home.packages = with pkgs; [
@@ -88,5 +103,6 @@
     wl-clipboard
     grim
     slurp
+    swaybg
   ];
 }

@@ -15,41 +15,38 @@
         spacing = 0;
 
         modules-left = [ "hyprland/workspaces" ];
-        modules-center = [ "clock" ];
-        modules-right = [ "custom/spotify" "pulseaudio" "network" "battery" ];
+        modules-center = [ "custom/spotify" ];
+        modules-right = [ "pulseaudio" "network" "battery" "clock" ];
 
         "hyprland/workspaces" = {
-          format = "{icon}";
+          format = "{id} {windows}";
+          format-window-separator = " ";
           on-click = "activate";
           sort-by-number = true;
           all-outputs = true;
           active-only = false;
-          format-icons = {
-            active = "";
-            default = "";
-            empty = "";
-          };
-          window-rewrite-default = "";
+          window-rewrite-default = "󰂣";
           window-rewrite = {
-            "class<kitty>" = "";
-            "class<firefox>" = "";
-            "class<qutebrowser>" = "";
-            "class<Code>" = "";
-            "class<code>" = "";
-            "class<dolphin>" = "";
-            "class<thunar>" = "";
-            "class<spotify>" = "";
-            "class<Spotify>" = "";
-            "class<discord>" = "";
-            "class<slack>" = "";
-            "class<obsidian>" = "";
-            "class<steam>" = "";
-            "class<mpv>" = "";
+            "class<kitty>" = "󰆍";
+            "class<firefox>" = "󰈹";
+            "class<qutebrowser>" = "󰇧";
+            "class<Code>" = "󰨞";
+            "class<code>" = "󰨞";
+            "class<dolphin>" = "󰉋";
+            "class<thunar>" = "󰉋";
+            "class<spotify>" = "󰓇";
+            "class<Spotify>" = "󰓇";
+            "class<discord>" = "󰙯";
+            "class<slack>" = "󰎶";
+            "class<obsidian>" = "󰎚";
+            "class<steam>" = "󰒔";
+            "class<mpv>" = "󰐊";
           };
         };
 
         clock = {
-          format = "{:%H:%M}";
+          format = "{:%H:%M:%S}";
+          interval = 1;
           format-alt = "{:%A, %B %d}";
           tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
         };
@@ -60,22 +57,24 @@
             warning = 30;
             critical = 15;
           };
-          format = "{icon}  {capacity}%";
-          format-charging = "  {capacity}%";
-          format-plugged = "  {capacity}%";
-          format-icons = [ "" "" "" "" "" ];
+          format = "{icon} {capacity}%";
+          format-charging = "󰂄 {capacity}%";
+          format-plugged = "󰚥 {capacity}%";
+          format-icons = [ "󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹" ];
         };
 
         network = {
-          format-wifi = "  {signalStrength}%";
-          format-ethernet = "  {ipaddr}";
-          format-disconnected = "  Disconnected";
+          format-wifi = "{icon} {essid}";
+          format-ethernet = " {ipaddr}";
+          format-disconnected = " Disconnected";
+          format-icons = [ "󰤯" "󰤟" "󰤢" "󰤥" "󰤨" ];
           tooltip-format-wifi = "{essid} ({signalStrength}%)";
+          on-click = "networkmanager_dmenu";
         };
 
         pulseaudio = {
-          format = "{icon}  {volume}%";
-          format-muted = "  Muted";
+          format = "{icon} {volume}%";
+          format-muted = "󰝟 Muted";
           format-icons = {
             default = [ "" "" "" ];
           };
@@ -84,23 +83,16 @@
 
         "custom/spotify" = {
           format = "{}";
-          return-type = "json";
           max-length = 40;
           interval = 5;
           exec = "${pkgs.writeShellScript "waybar-spotify" ''
-            STATUS=$(${pkgs.playerctl}/bin/playerctl --player=spotify status 2>/dev/null)
-            if [ "$STATUS" = "Playing" ]; then
-              ARTIST=$(${pkgs.playerctl}/bin/playerctl --player=spotify metadata artist)
-              TITLE=$(${pkgs.playerctl}/bin/playerctl --player=spotify metadata title)
-              echo "{\"text\": \"  $ARTIST - $TITLE\", \"class\": \"playing\"}"
-            elif [ "$STATUS" = "Paused" ]; then
-              ARTIST=$(${pkgs.playerctl}/bin/playerctl --player=spotify metadata artist)
-              TITLE=$(${pkgs.playerctl}/bin/playerctl --player=spotify metadata title)
-              echo "{\"text\": \"  $ARTIST - $TITLE\", \"class\": \"paused\"}"
-            else
-              echo "{\"text\": \"\", \"class\": \"stopped\"}"
+            ARTIST=$(${pkgs.playerctl}/bin/playerctl --player=spotify metadata artist 2>/dev/null)
+            TITLE=$(${pkgs.playerctl}/bin/playerctl --player=spotify metadata title 2>/dev/null)
+            if [ -n "$ARTIST" ] && [ -n "$TITLE" ]; then
+              echo "  $ARTIST - $TITLE"
             fi
           ''}";
+          exec-if = "pgrep -x spotify";
           on-click = "${pkgs.playerctl}/bin/playerctl --player=spotify play-pause";
         };
       };
@@ -110,7 +102,7 @@
       * {
         border: none;
         border-radius: 0;
-        font-family: "FiraCode Nerd Font Mono", sans-serif;
+        font-family: "FiraCode Nerd Font", sans-serif;
         font-size: 13px;
         min-height: 0;
       }
@@ -135,8 +127,7 @@
       #clock,
       #battery,
       #network,
-      #pulseaudio,
-      #custom-spotify {
+      #pulseaudio {
         padding: 0 14px;
         margin: 6px 3px;
         border-radius: 8px;
@@ -210,6 +201,10 @@
       }
 
       #custom-spotify {
+        padding: 0 14px;
+        margin: 6px 3px;
+        border-radius: 8px;
+        background: rgba(59, 66, 82, 0.6);
         color: #a3be8c;
       }
 
@@ -217,7 +212,7 @@
         color: #4c566a;
       }
 
-      @keyframes blink {
+@keyframes blink {
         to {
           color: #eceff4;
         }
@@ -228,5 +223,6 @@
   home.packages = with pkgs; [
     playerctl
     pavucontrol
+    networkmanager_dmenu
   ];
 }
