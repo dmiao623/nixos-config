@@ -75,17 +75,18 @@
         "$mod, mouse:272, movewindow"
         "$mod, mouse:273, resizewindow"
       ];
+
+      exec-once = [
+        "waybar"
+      ];
     };
   };
 
   home.packages = with pkgs; [
     fuzzel
-    waybar
     mako
     wl-clipboard
     grim
     slurp
   ];
-
-  programs.waybar.enable = true;
 }

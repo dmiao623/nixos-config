@@ -12,6 +12,7 @@
     ./config/hyprland.nix
     ./config/kanata.nix
     ./config/vscode.nix
+    ./config/waybar.nix
     ./config/zsh.nix
   ];
 
