@@ -27,13 +27,12 @@
       };
 
       bind = [
-        "$mod, Return, exec, kitty"
+        "$mod, K, exec, kitty"
         "$mod, Q, killactive"
         "$mod, D, exec, fuzzel"
         "$mod, E, exec, dolphin"
         "$mod, F, fullscreen"
         "$mod SHIFT, E, exit"
-
 
         # Move focus
         "$mod, H, movefocus, l"
@@ -72,6 +71,16 @@
         "CTRL SHIFT, bracketright, movetoworkspace, 10"
       ];
 
+      # Volume keys
+      bindel = [
+        ", XF86AudioRaiseVolume, exec, swayosd-client --output-volume raise"
+        ", XF86AudioLowerVolume, exec, swayosd-client --output-volume lower"
+      ];
+
+      bindl = [
+        ", XF86AudioMute, exec, swayosd-client --output-volume mute-toggle"
+      ];
+
       # Mouse binds
       bindm = [
         "$mod, mouse:272, movewindow"
@@ -85,6 +94,7 @@
       exec-once = [
         "waybar"
         "swaybg -i ${../../../assets/wallpaper.jpg} -m fill"
+        "swayosd-server"
       ];
     };
   };
@@ -104,5 +114,6 @@
     grim
     slurp
     swaybg
+    swayosd
   ];
 }
