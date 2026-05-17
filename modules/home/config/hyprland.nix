@@ -73,12 +73,12 @@
 
       # Volume keys
       bindel = [
-        ", XF86AudioRaiseVolume, exec, swayosd-client --output-volume raise"
-        ", XF86AudioLowerVolume, exec, swayosd-client --output-volume lower"
+        ", XF86AudioRaiseVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+"
+        ", XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
       ];
 
       bindl = [
-        ", XF86AudioMute, exec, swayosd-client --output-volume mute-toggle"
+        ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
       ];
 
       # Mouse binds
@@ -94,7 +94,7 @@
       exec-once = [
         "waybar"
         "swaybg -i ${../../../assets/wallpaper.jpg} -m fill"
-        "swayosd-server"
+
       ];
     };
   };
@@ -114,6 +114,6 @@
     grim
     slurp
     swaybg
-    swayosd
+    wireplumber
   ];
 }

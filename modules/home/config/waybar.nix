@@ -16,7 +16,7 @@
 
         modules-left = [ "hyprland/workspaces" ];
         modules-center = [ "custom/spotify" ];
-        modules-right = [ "pulseaudio" "network" "battery" "clock" ];
+        modules-right = [ "group/volume" "group/brightness" "group/bluetooth" "group/network" "battery" "clock" ];
 
         "hyprland/workspaces" = {
           format = "{id} {windows}";
@@ -44,6 +44,103 @@
           };
         };
 
+        # Volume: icon + slider drawer
+        "group/volume" = {
+          orientation = "horizontal";
+          drawer = {
+            transition-duration = 300;
+            transition-left-to-right = true;
+          };
+          modules = [ "pulseaudio" "pulseaudio/slider" ];
+        };
+
+        pulseaudio = {
+          format = "{icon}";
+          format-muted = "󰝟";
+          format-icons = {
+            default = [ "󰕿" "󰖀" "󰕾" ];
+          };
+          tooltip-format = "{volume}%";
+          on-click = "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
+        };
+
+        "pulseaudio/slider" = {
+          min = 0;
+          max = 100;
+          orientation = "horizontal";
+        };
+
+        # Brightness: icon + slider drawer
+        "group/brightness" = {
+          orientation = "horizontal";
+          drawer = {
+            transition-duration = 300;
+            transition-left-to-right = true;
+          };
+          modules = [ "backlight" "backlight/slider" ];
+        };
+
+        backlight = {
+          format = "{icon}";
+          format-icons = [ "󰃞" "󰃟" "󰃠" ];
+          tooltip-format = "{percent}% brightness";
+        };
+
+        "backlight/slider" = {
+          min = 0;
+          max = 100;
+          orientation = "horizontal";
+        };
+
+        # Bluetooth: icon + status drawer
+        "group/bluetooth" = {
+          orientation = "horizontal";
+          drawer = {
+            transition-duration = 300;
+            transition-left-to-right = true;
+          };
+          modules = [ "bluetooth#icon" "bluetooth#status" ];
+        };
+
+        "bluetooth#icon" = {
+          format = "󰂯";
+          format-connected = "󰂱";
+          format-disabled = "󰂲";
+          tooltip-format = "{status}";
+          on-click = "blueman-manager";
+        };
+
+        "bluetooth#status" = {
+          format = "{status}";
+          format-connected = "{device_alias}";
+          format-disabled = "Off";
+        };
+
+        # Network: icon + name drawer
+        "group/network" = {
+          orientation = "horizontal";
+          drawer = {
+            transition-duration = 300;
+            transition-left-to-right = true;
+          };
+          modules = [ "network#icon" "network#name" ];
+        };
+
+        "network#icon" = {
+          format-wifi = "{icon}";
+          format-ethernet = "";
+          format-disconnected = "󰤮";
+          format-icons = [ "󰤯" "󰤟" "󰤢" "󰤥" "󰤨" ];
+          tooltip-format-wifi = "{essid} ({signalStrength}%)";
+          on-click = "networkmanager_dmenu";
+        };
+
+        "network#name" = {
+          format-wifi = "{essid}";
+          format-ethernet = "{ipaddr}";
+          format-disconnected = "Disconnected";
+        };
+
         clock = {
           format = "{:%H:%M:%S}";
           interval = 1;
@@ -61,24 +158,6 @@
           format-charging = "󰂄 {capacity}%";
           format-plugged = "󰚥 {capacity}%";
           format-icons = [ "󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹" ];
-        };
-
-        network = {
-          format-wifi = "{icon} {essid}";
-          format-ethernet = " {ipaddr}";
-          format-disconnected = " Disconnected";
-          format-icons = [ "󰤯" "󰤟" "󰤢" "󰤥" "󰤨" ];
-          tooltip-format-wifi = "{essid} ({signalStrength}%)";
-          on-click = "networkmanager_dmenu";
-        };
-
-        pulseaudio = {
-          format = "{icon} {volume}%";
-          format-muted = "󰝟 Muted";
-          format-icons = {
-            default = [ "" "" "" ];
-          };
-          on-click = "pavucontrol";
         };
 
         "custom/spotify" = {
@@ -125,9 +204,7 @@
 
       #workspaces,
       #clock,
-      #battery,
-      #network,
-      #pulseaudio {
+      #battery {
         padding: 0 14px;
         margin: 6px 3px;
         border-radius: 8px;
@@ -184,20 +261,98 @@
         animation: blink 1s linear infinite;
       }
 
+      /* Group drawer styling */
+      #volume,
+      #brightness,
+      #bluetooth,
+      #network {
+        padding: 0 4px;
+        margin: 6px 3px;
+        border-radius: 8px;
+        background: rgba(59, 66, 82, 0.6);
+      }
+
+      #pulseaudio {
+        color: #b48ead;
+        padding: 0 6px;
+      }
+
+      #pulseaudio.muted {
+        color: #4c566a;
+      }
+
+      #backlight {
+        color: #ebcb8b;
+        padding: 0 6px;
+      }
+
+      #bluetooth {
+        color: #81a1c1;
+        padding: 0 6px;
+      }
+
+      #bluetooth.disabled,
+      #bluetooth.off {
+        color: #4c566a;
+      }
+
       #network {
         color: #88c0d0;
+        padding: 0 6px;
       }
 
       #network.disconnected {
         color: #bf616a;
       }
 
-      #pulseaudio {
-        color: #b48ead;
+      /* Slider styling */
+      #pulseaudio-slider,
+      #backlight-slider {
+        padding: 0 8px;
+        min-width: 100px;
       }
 
-      #pulseaudio.muted {
-        color: #4c566a;
+      #pulseaudio-slider slider,
+      #backlight-slider slider {
+        min-height: 0px;
+        min-width: 0px;
+        box-shadow: none;
+        background: transparent;
+        border: none;
+        opacity: 0;
+      }
+
+      #pulseaudio-slider trough {
+        min-height: 6px;
+        min-width: 80px;
+        border-radius: 4px;
+        background: rgba(76, 86, 106, 0.6);
+      }
+
+      #pulseaudio-slider highlight {
+        min-height: 6px;
+        border-radius: 4px;
+        background: #b48ead;
+      }
+
+      #backlight-slider trough {
+        min-height: 6px;
+        min-width: 80px;
+        border-radius: 4px;
+        background: rgba(76, 86, 106, 0.6);
+      }
+
+      #backlight-slider highlight {
+        min-height: 6px;
+        border-radius: 4px;
+        background: #ebcb8b;
+      }
+
+      /* Drawer child text modules */
+      #bluetooth.status,
+      #network.name {
+        color: #d8dee9;
+        padding: 0 8px 0 4px;
       }
 
       #custom-spotify {
@@ -212,7 +367,7 @@
         color: #4c566a;
       }
 
-@keyframes blink {
+      @keyframes blink {
         to {
           color: #eceff4;
         }
@@ -224,5 +379,7 @@
     playerctl
     pavucontrol
     networkmanager_dmenu
+    brightnessctl
+    blueman
   ];
 }
