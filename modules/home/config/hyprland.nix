@@ -12,6 +12,7 @@
         gaps_in = 5;
         gaps_out = 10;
         border_size = 2;
+        resize_on_border = true;
         "col.active_border" = "rgba(88c0d0ff)";
         "col.inactive_border" = "rgba(4c566aff)";
       };
@@ -27,7 +28,7 @@
       };
 
       bind = [
-        "$mod, K, exec, kitty"
+        "$mod, O, submap, launch"
         "$mod, Q, killactive"
         "$mod, D, exec, fuzzel"
         "$mod, E, exec, dolphin"
@@ -97,6 +98,17 @@
 
       ];
     };
+    extraConfig = ''
+      submap = launch
+      bind = , K, exec, kitty
+      bind = , K, submap, reset
+      bind = , Q, exec, qutebrowser
+      bind = , Q, submap, reset
+      bind = , V, exec, code
+      bind = , V, submap, reset
+      bind = , escape, submap, reset
+      submap = reset
+    '';
   };
 
 
