@@ -9,6 +9,7 @@
 
   environment.systemPackages = with pkgs; [
     bat
+    bitwarden-desktop
     claude-code
     curl
     discord
