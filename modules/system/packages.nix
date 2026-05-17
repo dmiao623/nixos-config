@@ -18,6 +18,7 @@
     kitty
     lf
     neofetch
+    osu-lazer
     qutebrowser
     ripgrep
     spotify
