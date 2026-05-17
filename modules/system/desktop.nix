@@ -29,6 +29,11 @@
 
   services.printing.enable = true;
 
+  # Bluetooth
+  hardware.bluetooth.enable = true;
+  hardware.bluetooth.powerOnBoot = true;
+  services.blueman.enable = true;
+
   # Audio via PipeWire.
   services.pulseaudio.enable = false;
   security.rtkit.enable = true;

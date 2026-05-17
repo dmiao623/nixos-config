@@ -105,9 +105,9 @@
         };
 
         "bluetooth#status" = {
-          format = "{status}";
+          format = "Disconnected";
           format-connected = "{device_alias}";
-          format-disabled = "Off";
+          format-disabled = "";
         };
 
         # Network: icon + name drawer
