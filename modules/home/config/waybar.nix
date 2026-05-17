@@ -15,8 +15,8 @@
         spacing = 0;
 
         modules-left = [ "hyprland/workspaces" ];
-        modules-center = [ "custom/spotify" ];
-        modules-right = [ "group/volume" "group/brightness" "group/bluetooth" "group/network" "battery" "clock" ];
+        modules-center = [ ];
+        modules-right = [ "group/spotify" "group/volume" "group/brightness" "group/bluetooth" "group/network" "battery" "clock" "clock#date" ];
 
         "hyprland/workspaces" = {
           format = "{id} {windows}";
@@ -28,19 +28,13 @@
           window-rewrite-default = "󰂣";
           window-rewrite = {
             "class<kitty>" = "󰆍";
-            "class<firefox>" = "󰈹";
             "class<org.qutebrowser.qutebrowser>" = "󰖟";
             "class<Code>" = "󰨞";
             "class<code>" = "󰨞";
-            "class<dolphin>" = "󰉋";
-            "class<thunar>" = "󰉋";
             "class<spotify>" = "󰓇";
             "class<Spotify>" = "󰓇";
             "class<discord>" = "󰙯";
-            "class<slack>" = "󰎶";
             "class<obsidian>" = "󰎚";
-            "class<steam>" = "󰒔";
-            "class<mpv>" = "󰐊";
           };
         };
 
@@ -141,11 +135,16 @@
           format-disconnected = "Disconnected";
         };
 
-        clock = {
-          format = "{:%H:%M:%S}";
-          interval = 1;
-          format-alt = "{:%A, %B %d}";
+        "clock#date" = {
+          format = "󰃶 {:%b %d, %Y}";
+          interval = 60;
           tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
+        };
+
+        clock = {
+          format = "󰥔 {:%H:%M:%S}";
+          interval = 1;
+          tooltip-format = "{:%A, %B %d %Y}";
         };
 
         battery = {
@@ -160,18 +159,46 @@
           format-icons = [ "󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹" ];
         };
 
-        "custom/spotify" = {
+        "group/spotify" = {
+          orientation = "horizontal";
+          drawer = {
+            transition-duration = 300;
+            transition-left-to-right = true;
+          };
+          modules = [ "custom/spotify-icon" "custom/spotify-info" ];
+        };
+
+        "custom/spotify-icon" = {
           format = "{}";
-          max-length = 40;
-          interval = 5;
-          exec = "${pkgs.writeShellScript "waybar-spotify" ''
-            ARTIST=$(${pkgs.playerctl}/bin/playerctl --player=spotify metadata artist 2>/dev/null)
-            TITLE=$(${pkgs.playerctl}/bin/playerctl --player=spotify metadata title 2>/dev/null)
-            if [ -n "$ARTIST" ] && [ -n "$TITLE" ]; then
-              echo "  $ARTIST - $TITLE"
+          return-type = "json";
+          interval = 3;
+          exec = "${pkgs.writeShellScript "waybar-spotify-icon" ''
+            STATUS=$(${pkgs.playerctl}/bin/playerctl --player=spotify status 2>/dev/null)
+            if [ "$STATUS" = "Playing" ]; then
+              echo "{\"text\": \"󰓇\", \"class\": \"playing\"}"
+            elif [ "$STATUS" = "Paused" ]; then
+              echo "{\"text\": \"󰓇\", \"class\": \"paused\"}"
+            else
+              echo "{\"text\": \"󰓇\", \"class\": \"closed\"}"
             fi
           ''}";
-          exec-if = "pgrep -x spotify";
+          on-click = "${pkgs.playerctl}/bin/playerctl --player=spotify play-pause";
+        };
+
+        "custom/spotify-info" = {
+          format = "{}";
+          return-type = "json";
+          interval = 3;
+          exec = "${pkgs.writeShellScript "waybar-spotify-info" ''
+            STATUS=$(${pkgs.playerctl}/bin/playerctl --player=spotify status 2>/dev/null)
+            if [ "$STATUS" = "Playing" ] || [ "$STATUS" = "Paused" ]; then
+              ARTIST=$(${pkgs.playerctl}/bin/playerctl --player=spotify metadata artist 2>/dev/null)
+              TITLE=$(${pkgs.playerctl}/bin/playerctl --player=spotify metadata title 2>/dev/null)
+              echo "{\"text\": \"$ARTIST - $TITLE\"}"
+            else
+              echo "{\"text\": \"\"}"
+            fi
+          ''}";
           on-click = "${pkgs.playerctl}/bin/playerctl --player=spotify play-pause";
         };
       };
@@ -262,19 +289,33 @@
       }
 
       /* Group drawer styling */
+      #spotify,
       #volume,
       #brightness,
       #bluetooth,
       #network {
-        padding: 0 4px;
         margin: 6px 3px;
         border-radius: 8px;
         background: rgba(59, 66, 82, 0.6);
       }
 
+      /* Lead icons in drawers - fixed size, centered */
+      #pulseaudio,
+      #backlight,
+      #bluetooth.icon,
+      #network.icon,
+      #custom-spotify-icon {
+        min-width: 28px;
+        padding: 0;
+        background: transparent;
+      }
+
+      label {
+        margin: 0;
+      }
+
       #pulseaudio {
         color: #b48ead;
-        padding: 0 6px;
       }
 
       #pulseaudio.muted {
@@ -283,12 +324,10 @@
 
       #backlight {
         color: #ebcb8b;
-        padding: 0 6px;
       }
 
-      #bluetooth {
+      #bluetooth.icon {
         color: #81a1c1;
-        padding: 0 6px;
       }
 
       #bluetooth.disabled,
@@ -296,9 +335,8 @@
         color: #4c566a;
       }
 
-      #network {
+      #network.icon {
         color: #88c0d0;
-        padding: 0 6px;
       }
 
       #network.disconnected {
@@ -355,16 +393,18 @@
         padding: 0 8px 0 4px;
       }
 
-      #custom-spotify {
-        padding: 0 14px;
-        margin: 6px 3px;
-        border-radius: 8px;
-        background: rgba(59, 66, 82, 0.6);
+      #custom-spotify-icon {
         color: #a3be8c;
       }
 
-      #custom-spotify.paused {
+      #custom-spotify-icon.paused,
+      #custom-spotify-icon.closed {
         color: #4c566a;
+      }
+
+      #custom-spotify-info {
+        color: #d8dee9;
+        padding: 0 8px 0 4px;
       }
 
       @keyframes blink {
