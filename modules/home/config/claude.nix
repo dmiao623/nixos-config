@@ -20,6 +20,7 @@
           "Bash(stat *)"
 
           "Bash(mkdir *)"
+          "Bash(echo *)"
           "Bash(touch *)"
           "Bash(cp *)"
 
