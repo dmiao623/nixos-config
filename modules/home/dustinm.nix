@@ -15,6 +15,7 @@
     ./config/vscode.nix
     ./config/waybar.nix
     ./config/zsh.nix
+    ./config/nixvim.nix
   ];
 
   home.username = "dustinm";
