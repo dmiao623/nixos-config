@@ -6,6 +6,7 @@
     ./config/secrets.nix
 
     ./config/bat.nix
+    ./config/claude.nix
     ./config/fzf.nix
     ./config/git.nix
     ./config/qutebrowser.nix
