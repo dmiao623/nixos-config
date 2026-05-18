@@ -27,5 +27,6 @@
     unzip
     uv
     wget
+    zoom-us
   ];
 }
