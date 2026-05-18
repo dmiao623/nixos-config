@@ -29,6 +29,8 @@
     LC_TIME = "en_US.UTF-8";
   };
 
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
   # required for Kanata service to access keyboard hardware
   hardware.uinput.enable = true;
 
