@@ -24,7 +24,6 @@
     qutebrowser
     ripgrep
     spotify
-    tree
     unzip
     uv
     wget
