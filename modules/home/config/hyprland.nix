@@ -119,7 +119,6 @@
   };
 
   home.packages = with pkgs; [
-    fuzzel
     mako
     wl-clipboard
     grim

@@ -7,6 +7,7 @@
 
     ./config/bat.nix
     ./config/claude.nix
+    ./config/fuzzel.nix
     ./config/fzf.nix
     ./config/git.nix
     ./config/qutebrowser.nix
