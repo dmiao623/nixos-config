@@ -30,8 +30,8 @@
 
     sessionVariables = {
       LANG = "en_US.UTF-8";
-      VISUAL = "vim";
-      EDITOR = "vim";
+      VISUAL = "nvim";
+      EDITOR = "nvim";
       PS1 = "$ ";
     };
 
