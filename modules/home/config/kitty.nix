@@ -21,6 +21,9 @@
       "cmd+h"          = "previous_tab";
       "ctrl+shift+tab" = "previous_tab";
       "cmd+q"          = "quit";
+      "alt+f"          = "send_key alt+f";
+      "alt+b"          = "send_key alt+b";
+      "alt+d"          = "send_key alt+d";
       "cmd+plus"       = "change_font_size all +2.0";
       "cmd+minus"      = "change_font_size all -2.0";
       "cmd+k"          = "clear_terminal to_cursor active";

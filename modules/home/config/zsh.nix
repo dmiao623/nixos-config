@@ -66,6 +66,18 @@
     '';
 
     initContent = lib.mkOrder 1500 ''
+      bindkey '^A' beginning-of-line
+      bindkey '^E' end-of-line
+      bindkey '^F' forward-char
+      bindkey '^B' backward-char
+      bindkey '\ef' forward-word
+      bindkey '\eb' backward-word
+      bindkey '^K' kill-line
+      bindkey '^U' backward-kill-line
+      bindkey '^W' backward-kill-word
+      bindkey '\ed' kill-word
+      bindkey '^D' delete-char-or-list
+      bindkey '^L' clear-screen
       neofetch
     '';
 
