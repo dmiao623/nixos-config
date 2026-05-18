@@ -1,0 +1,39 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+REPO_DIR="$(dirname "$SCRIPT_DIR")"
+FILE="$REPO_DIR/secrets/quickmarks.json"
+
+if [ ! -f "$FILE" ]; then
+  echo "Error: '$FILE' not found" >&2
+  exit 1
+fi
+
+tmpfile=$(mktemp --suffix=".json")
+trap 'rm -f "$tmpfile"' EXIT
+
+# Decrypt, extract the data string, and pretty-print
+sops -d "$FILE" | nix-shell -p jq --run 'jq -r .data | jq .' > "$tmpfile"
+
+checksum_before=$(sha256sum "$tmpfile" | cut -d' ' -f1)
+
+${EDITOR:-nvim} "$tmpfile"
+
+checksum_after=$(sha256sum "$tmpfile" | cut -d' ' -f1)
+
+if [ "$checksum_before" = "$checksum_after" ]; then
+  echo "No changes made."
+  exit 0
+fi
+
+# Validate, compact, and wrap back into {"data": ...}
+if ! nix-shell -p jq --run "jq -c . '$tmpfile'" | nix-shell -p jq --run 'jq -Rs "{data: .}"' > "$tmpfile.wrapped" 2>/dev/null; then
+  echo "Error: invalid JSON, not re-encrypting" >&2
+  exit 1
+fi
+
+# Re-encrypt as binary
+sops -e --input-type json --output-type json --filename-override "$FILE" "$tmpfile.wrapped" > "$FILE"
+rm -f "$tmpfile.wrapped"
+echo "File re-encrypted successfully."
