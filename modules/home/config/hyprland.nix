@@ -31,7 +31,6 @@
         "$mod, O, submap, launch"
         "$mod, Q, killactive"
         "$mod, D, exec, fuzzel"
-        "$mod, E, exec, dolphin"
         "$mod, F, fullscreen"
         "$mod SHIFT, E, exit"
 
