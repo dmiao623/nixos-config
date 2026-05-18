@@ -14,6 +14,7 @@
     curl
     discord
     eza
+    gcc
     git
     htop
     kitty
@@ -26,7 +27,6 @@
     tree
     unzip
     uv
-    vim
     wget
   ];
 }
