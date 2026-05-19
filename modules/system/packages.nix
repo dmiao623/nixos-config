@@ -28,6 +28,7 @@
     unzip
     uv
     wget
+    wl-clipboard
     zoom-us
   ];
 }

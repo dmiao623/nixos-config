@@ -55,6 +55,14 @@
       ".." = ''
         cd ..
       '';
+
+      pbcopy = ''
+        wl-copy
+      '';
+
+      pbpaste = ''
+        wl-paste
+      '';
     };
 
     syntaxHighlighting = {

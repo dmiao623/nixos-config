@@ -118,8 +118,7 @@
   };
 
   home.packages = with pkgs; [
-    wl-clipboard
-    grim
+    rim
     slurp
     swaybg
     wireplumber
