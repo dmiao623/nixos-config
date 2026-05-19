@@ -118,12 +118,10 @@
   };
 
   home.packages = with pkgs; [
-    mako
     wl-clipboard
     grim
     slurp
     swaybg
     wireplumber
-    jq
   ];
 }

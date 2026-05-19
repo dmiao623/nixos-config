@@ -17,6 +17,7 @@
     gcc
     git
     htop
+    jq
     kitty
     lf
     neofetch

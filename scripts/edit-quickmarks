@@ -14,7 +14,7 @@ tmpfile=$(mktemp --suffix=".json")
 trap 'rm -f "$tmpfile"' EXIT
 
 # Decrypt, extract the data string, and pretty-print
-sops -d "$FILE" | nix-shell -p jq --run 'jq -r .data | jq .' > "$tmpfile"
+sops -d "$FILE" | jq -r .data | jq . > "$tmpfile"
 
 checksum_before=$(sha256sum "$tmpfile" | cut -d' ' -f1)
 
@@ -28,7 +28,7 @@ if [ "$checksum_before" = "$checksum_after" ]; then
 fi
 
 # Validate, compact, and wrap back into {"data": ...}
-if ! nix-shell -p jq --run "jq -c . '$tmpfile'" | nix-shell -p jq --run 'jq -Rs "{data: .}"' > "$tmpfile.wrapped" 2>/dev/null; then
+if ! jq -c . "$tmpfile" | jq -Rs '{"data": .}' > "$tmpfile.wrapped" 2>/dev/null; then
   echo "Error: invalid JSON, not re-encrypting" >&2
   exit 1
 fi
