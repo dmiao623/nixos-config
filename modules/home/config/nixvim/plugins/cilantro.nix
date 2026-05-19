@@ -13,7 +13,7 @@ in
 
     extraConfigLua = ''
       require("cilantro").setup({
-        task_dir = "~/tasks",
+        task_dir = "~/Tasks",
       })
     '';
   };
