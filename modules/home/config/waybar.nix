@@ -1,5 +1,53 @@
 { pkgs, ... }:
 
+let
+  powerMenu = pkgs.writeShellScript "power-menu" ''
+    #!/usr/bin/env bash
+
+    SHUTDOWN="󰐥  Shutdown"
+    RESTART="󰜉  Restart"
+    LOGOUT="󰍃  Logout"
+    CANCEL="󰅖  Cancel"
+
+    ACTION=$(printf '%s\n' "$SHUTDOWN" "$RESTART" "$LOGOUT" "$CANCEL" | \
+      fuzzel --dmenu \
+        --hide-prompt \
+        --lines=4 \
+        --width=22)
+
+    case "$ACTION" in
+      "$SHUTDOWN") CMD="systemctl poweroff" ; LABEL="Shutdown" ;;
+      "$RESTART")  CMD="systemctl reboot"   ; LABEL="Restart"  ;;
+      "$LOGOUT")   CMD="hyprctl dispatch exit" ; LABEL="Logout" ;;
+      *) exit 0 ;;
+    esac
+
+    RESULT_FILE=$(mktemp)
+
+    printf '%s\n' "  Confirm" "󰅖  Cancel" | \
+      fuzzel --dmenu \
+        --prompt-only="$LABEL — auto in 60s  " \
+        --lines=2 \
+        --width=28 > "$RESULT_FILE" &
+    FUZZEL_PID=$!
+
+    (sleep 60 && kill "$FUZZEL_PID" 2>/dev/null) &
+    TIMER_PID=$!
+
+    wait "$FUZZEL_PID"
+    CONFIRM=$(cat "$RESULT_FILE")
+    rm -f "$RESULT_FILE"
+
+    if kill -0 "$TIMER_PID" 2>/dev/null; then
+      kill "$TIMER_PID" 2>/dev/null
+      wait "$TIMER_PID" 2>/dev/null
+      [[ "$CONFIRM" == *Confirm* ]] && eval "$CMD"
+    else
+      eval "$CMD"
+    fi
+  '';
+in
+
 {
   programs.waybar = {
     enable = true;
@@ -14,7 +62,7 @@
         margin-right = 10;
         spacing = 0;
 
-        modules-left = [ "hyprland/workspaces" ];
+        modules-left = [ "custom/power" "hyprland/workspaces" ];
         modules-center = [ ];
         modules-right = [ "group/spotify" "group/volume" "group/brightness" "group/bluetooth" "group/network" "battery" "clock" "clock#date" ];
 
@@ -183,6 +231,12 @@
             fi
           ''}";
           on-click = "${pkgs.playerctl}/bin/playerctl --player=spotify play-pause";
+        };
+
+        "custom/power" = {
+          format = "󰐥";
+          on-click = "${powerMenu}";
+          tooltip-format = "Power menu";
         };
 
         "custom/spotify-info" = {
@@ -405,6 +459,20 @@
       #custom-spotify-info {
         color: #d8dee9;
         padding: 0 8px 0 4px;
+      }
+
+      #custom-power {
+        color: #bf616a;
+        padding: 0 14px;
+        margin: 6px 3px;
+        border-radius: 8px;
+        background: rgba(59, 66, 82, 0.6);
+        font-size: 15px;
+      }
+
+      #custom-power:hover {
+        color: #eceff4;
+        background: rgba(191, 97, 106, 0.25);
       }
 
       @keyframes blink {
