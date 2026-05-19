@@ -14,6 +14,11 @@
   networking.hostName = "nixos";
   networking.networkmanager.enable = true;
 
+  environment.etc."NetworkManager/conf.d/credentials.conf".text = ''
+    [connection]
+    wifi-sec.psk-flags=0
+  '';
+
   time.timeZone = "America/Los_Angeles";
 
   i18n.defaultLocale = "en_US.UTF-8";
