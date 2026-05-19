@@ -23,12 +23,14 @@
     neofetch
     osu-lazer
     qutebrowser
+    ripdrag
     ripgrep
     spotify
     unzip
     uv
     wget
     wl-clipboard
+    yazi
     zoom-us
   ];
 }

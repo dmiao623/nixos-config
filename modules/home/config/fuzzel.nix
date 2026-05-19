@@ -34,6 +34,14 @@
 
   home.packages = [ pkgs.papirus-icon-theme ];
 
+  xdg.dataFile."icons/hicolor/scalable/apps/yazi.svg".text = ''
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+      <rect width="64" height="64" rx="8" fill="#2e3440"/>
+      <polyline points="10,10 32,34 54,10" fill="none" stroke="#88c0d0" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="32" y1="34" x2="32" y2="56" stroke="#88c0d0" stroke-width="7" stroke-linecap="round"/>
+    </svg>
+  '';
+
   xdg.desktopEntries = {
     # standardize capitalization
     kitty = {
@@ -74,6 +82,11 @@
     lf = {
       name = "lf";
       noDisplay = true;
+    };
+    yazi = {
+      name = "Yazi";
+      exec = "kitty yazi";
+      icon = "yazi";
     };
     nvim = {
       name = "Neovim";
