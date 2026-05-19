@@ -20,7 +20,7 @@
       flake = false;
     };
     cilantro-nvim = {
-      url = "github:dmiao623/cilantro.nvim/413d620c6729a881809c1efd225a7f28fee1714a";
+      url = "github:dmiao623/cilantro.nvim";
       flake = false;
     };
   };

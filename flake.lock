@@ -3,17 +3,16 @@
     "cilantro-nvim": {
       "flake": false,
       "locked": {
-        "lastModified": 1775940807,
-        "narHash": "sha256-bk53OH8yvS96R8knnsBg1GswakF1QQvpVmBq/d6P3nI=",
+        "lastModified": 1779225046,
+        "narHash": "sha256-XX7i2z1pCnOcJWpl97N0PhkpAwVuK9bkr7aFh7EoSjY=",
         "owner": "dmiao623",
         "repo": "cilantro.nvim",
-        "rev": "413d620c6729a881809c1efd225a7f28fee1714a",
+        "rev": "e882114a7b484b821de14f913f0bed71397cf5c8",
         "type": "github"
       },
       "original": {
         "owner": "dmiao623",
         "repo": "cilantro.nvim",
-        "rev": "413d620c6729a881809c1efd225a7f28fee1714a",
         "type": "github"
       }
     },
