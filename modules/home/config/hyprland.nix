@@ -118,7 +118,7 @@
   };
 
   home.packages = with pkgs; [
-    rim
+    grim
     slurp
     swaybg
     wireplumber
