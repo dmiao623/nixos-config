@@ -30,16 +30,15 @@
       bind = [
         "$mod, O, submap, launch"
         "$mod, Q, killactive"
+        "$mod SHIFT, Q, forcekillactive"
         "$mod, D, exec, fuzzel"
         "$mod, F, fullscreen"
-        "$mod SHIFT, E, exit"
 
         # Move focus
         "$mod, H, movefocus, l"
         "$mod, L, movefocus, r"
         "$mod, K, movefocus, u"
         "$mod, J, movefocus, d"
-
         # Move windows
         "$mod SHIFT, H, movewindow, l"
         "$mod SHIFT, L, movewindow, r"
@@ -125,5 +124,6 @@
     slurp
     swaybg
     wireplumber
+    jq
   ];
 }
