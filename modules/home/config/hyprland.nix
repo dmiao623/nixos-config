@@ -104,6 +104,8 @@
       bind = , Q, submap, reset
       bind = , V, exec, code
       bind = , V, submap, reset
+      bind = , C, exec, kitty -- nvim -c "Cilantro"
+      bind = , C, submap, reset
       bind = , escape, submap, reset
       submap = reset
     '';
@@ -115,6 +117,13 @@
     package = pkgs.adwaita-icon-theme;
     size = 24;
     gtk.enable = true;
+  };
+
+  xdg.desktopEntries.cilantro = {
+    name = "Cilantro";
+    exec = "kitty -- nvim -c Cilantro";
+    icon = ../../../assets/cilantro.svg;
+    terminal = false;
   };
 
   home.packages = with pkgs; [
