@@ -78,6 +78,8 @@ in
     };
 
     extraConfig = ''
+      config.bind('y', 'yank selection')
+
       kb_unset = { "normal": ["d", "D", "t"] }
       for m, ks in kb_unset.items():
         for k in ks:
