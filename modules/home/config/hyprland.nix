@@ -1,5 +1,49 @@
 { pkgs, ... }:
 
+let
+  screenshotSave = pkgs.writeShellScript "screenshot-save" ''
+    TMPFILE=$(mktemp /tmp/screenshot-XXXXXX.png)
+    ${pkgs.hyprshot}/bin/hyprshot -m region --raw > "$TMPFILE" 2>/dev/null
+    if [ ! -s "$TMPFILE" ]; then
+      rm -f "$TMPFILE"
+      exit 0
+    fi
+    DEST=$(${pkgs.zenity}/bin/zenity --file-selection --save \
+      --filename="$(date '+%Y-%m-%d_%H-%M-%S').png" 2>/dev/null)
+    if [ -n "$DEST" ]; then
+      mv "$TMPFILE" "$DEST"
+    else
+      rm -f "$TMPFILE"
+    fi
+  '';
+
+  screenshotClipboard = pkgs.writeShellScript "screenshot-clipboard" ''
+    ${pkgs.hyprshot}/bin/hyprshot -m region --raw 2>/dev/null \
+      | ${pkgs.wl-clipboard}/bin/wl-copy --type image/png
+  '';
+
+  screenshotFullSave = pkgs.writeShellScript "screenshot-full-save" ''
+    TMPFILE=$(mktemp /tmp/screenshot-XXXXXX.png)
+    ${pkgs.hyprshot}/bin/hyprshot -m output --raw > "$TMPFILE" 2>/dev/null
+    if [ ! -s "$TMPFILE" ]; then
+      rm -f "$TMPFILE"
+      exit 0
+    fi
+    DEST=$(${pkgs.zenity}/bin/zenity --file-selection --save \
+      --filename="$(date '+%Y-%m-%d_%H-%M-%S').png" 2>/dev/null)
+    if [ -n "$DEST" ]; then
+      mv "$TMPFILE" "$DEST"
+    else
+      rm -f "$TMPFILE"
+    fi
+  '';
+
+  screenshotFullClipboard = pkgs.writeShellScript "screenshot-full-clipboard" ''
+    ${pkgs.hyprshot}/bin/hyprshot -m output --raw 2>/dev/null \
+      | ${pkgs.wl-clipboard}/bin/wl-copy --type image/png
+  '';
+in
+
 {
   wayland.windowManager.hyprland = {
     enable = true;
@@ -44,6 +88,12 @@
         "$mod SHIFT, L, movewindow, r"
         "$mod SHIFT, K, movewindow, u"
         "$mod SHIFT, J, movewindow, d"
+
+        # Screenshots
+        ", Print, exec, ${screenshotSave}"
+        "SHIFT, Print, exec, ${screenshotClipboard}"
+        "$mod, Print, exec, ${screenshotFullSave}"
+        "$mod SHIFT, Print, exec, ${screenshotFullClipboard}"
 
         # Workspaces
         "CTRL, ampersand, workspace, 1"
@@ -128,8 +178,10 @@
 
   home.packages = with pkgs; [
     grim
+    hyprshot
     slurp
     swaybg
     wireplumber
+    zenity
   ];
 }
