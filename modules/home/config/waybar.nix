@@ -24,11 +24,11 @@ let
 
     RESULT_FILE=$(mktemp)
 
-    printf '%s\n' "  Confirm" "󰅖  Cancel" | \
+    printf '%s\n' "󰄬  Confirm" "󰅖  Cancel" | \
       fuzzel --dmenu \
-        --prompt-only="$LABEL — auto in 60s  " \
+        --hide-prompt \
         --lines=2 \
-        --width=28 > "$RESULT_FILE" &
+        --width=22 > "$RESULT_FILE" &
     FUZZEL_PID=$!
 
     (sleep 60 && kill "$FUZZEL_PID" 2>/dev/null) &
