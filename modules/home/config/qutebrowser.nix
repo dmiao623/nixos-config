@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 let
   quickmarksJqScript = pkgs.writeText "flatten-quickmarks.jq" ''
@@ -22,17 +27,18 @@ in
     enableDefaultBindings = true;
 
     searchEngines = {
-      DEFAULT    = "https://google.com/search?hl=en&q={}";
-      "="        = "https://www.wolframalpha.com/input?i={}";
-      "?w"       = "https://en.wikipedia.org/wiki/{}";
-      "?mynix"   = "https://mynixos.com/search?q={}";
-      "?nixpkgs" = "https://search.nixos.org/packages?channel=25.05&from=0&size=50&sort=relevance&type=packages&query={}";
+      DEFAULT = "https://google.com/search?hl=en&q={}";
+      "=" = "https://www.wolframalpha.com/input?i={}";
+      "?w" = "https://en.wikipedia.org/wiki/{}";
+      "?mynix" = "https://mynixos.com/search?q={}";
+      "?nixpkgs" =
+        "https://search.nixos.org/packages?channel=25.05&from=0&size=50&sort=relevance&type=packages&query={}";
     };
 
     keyBindings = {
       normal = {
-        "H"  = "tab-prev";
-        "L"  = "tab-next";
+        "H" = "tab-prev";
+        "L" = "tab-next";
         "dh" = "back";
         "dl" = "forward";
         "dd" = "tab-close";
@@ -56,17 +62,17 @@ in
       };
 
       fonts = {
-        hints   = "bold 14pt default_family";
+        hints = "bold 14pt default_family";
         statusbar = "16pt default_family";
         tabs = {
-          selected   = "14pt default_family";
+          selected = "14pt default_family";
           unselected = "14pt default_family";
         };
       };
 
       hints = {
         chars = "aoeuhtns";
-        mode  = "letter";
+        mode = "letter";
       };
 
       url = {

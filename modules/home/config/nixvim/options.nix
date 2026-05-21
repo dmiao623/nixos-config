@@ -45,8 +45,14 @@
 
     autoCmd = [
       {
-        event = [ "BufRead" "BufNewFile" ];
-        pattern = [ "*.c0" "*.c1" ]; # 15-122 :<
+        event = [
+          "BufRead"
+          "BufNewFile"
+        ];
+        pattern = [
+          "*.c0"
+          "*.c1"
+        ]; # 15-122 :<
         command = "set filetype=c";
       }
     ];

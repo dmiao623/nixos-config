@@ -34,7 +34,10 @@
     LC_TIME = "en_US.UTF-8";
   };
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 
   # required for Kanata service to access keyboard hardware
   hardware.uinput.enable = true;
@@ -49,7 +52,12 @@
   users.users.dustinm = {
     isNormalUser = true;
     description = "Dustin Miao";
-    extraGroups = [ "networkmanager" "wheel" "input" "uinput" ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+      "input"
+      "uinput"
+    ];
     shell = pkgs.zsh;
   };
 

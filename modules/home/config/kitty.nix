@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 {
   programs.kitty = {
@@ -9,37 +14,37 @@
     shellIntegration.mode = "no-cursor";
 
     keybindings = {
-      "cmd+c"          = "copy_to_clipboard";
-      "cmd+v"          = "paste_from_clipboard";
-      "cmd+n"          = "new_os_window";
-      "shift+cmd+w"    = "close_os_window";
-      "shift+cmd+i"    = "set_tab_title";
-      "cmd+t"          = "new_tab";
-      "cmd+w"          = "close_tab";
-      "cmd+l"          = "next_tab";
-      "ctrl+tab"       = "next_tab";
-      "cmd+h"          = "previous_tab";
+      "cmd+c" = "copy_to_clipboard";
+      "cmd+v" = "paste_from_clipboard";
+      "cmd+n" = "new_os_window";
+      "shift+cmd+w" = "close_os_window";
+      "shift+cmd+i" = "set_tab_title";
+      "cmd+t" = "new_tab";
+      "cmd+w" = "close_tab";
+      "cmd+l" = "next_tab";
+      "ctrl+tab" = "next_tab";
+      "cmd+h" = "previous_tab";
       "ctrl+shift+tab" = "previous_tab";
-      "cmd+q"          = "quit";
-      "alt+f"          = "send_key alt+f";
-      "alt+b"          = "send_key alt+b";
-      "alt+d"          = "send_key alt+d";
-      "cmd+plus"       = "change_font_size all +2.0";
-      "cmd+minus"      = "change_font_size all -2.0";
-      "cmd+k"          = "clear_terminal to_cursor active";
+      "cmd+q" = "quit";
+      "alt+f" = "send_key alt+f";
+      "alt+b" = "send_key alt+b";
+      "alt+d" = "send_key alt+d";
+      "cmd+plus" = "change_font_size all +2.0";
+      "cmd+minus" = "change_font_size all -2.0";
+      "cmd+k" = "clear_terminal to_cursor active";
     };
 
     settings = {
-      clear_all_shortcuts                = "yes";
-      cursor_stop_blinking_after         = 0;
-      tab_bar_margin_height              = "5.0 2.0";
-      tab_bar_style                      = "separator";
-      tab_switch_strategy                = "right";
-      tab_separator                      = "\" ┇ \"";
-      tab_bar_min_tabs                   = 1;
-      tab_title_max_length               = 30;
-      tab_title_template                 = "{bell_symbol}{activity_symbol}{fmt.bold}{index}{fmt.nobold}| {title}";
-      paste_actions                      = "confirm-if-large";
+      clear_all_shortcuts = "yes";
+      cursor_stop_blinking_after = 0;
+      tab_bar_margin_height = "5.0 2.0";
+      tab_bar_style = "separator";
+      tab_switch_strategy = "right";
+      tab_separator = "\" ┇ \"";
+      tab_bar_min_tabs = 1;
+      tab_title_max_length = 30;
+      tab_title_template = "{bell_symbol}{activity_symbol}{fmt.bold}{index}{fmt.nobold}| {title}";
+      paste_actions = "confirm-if-large";
       macos_quit_when_last_window_closed = "yes";
     };
 

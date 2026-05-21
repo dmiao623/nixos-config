@@ -52,7 +52,11 @@
       name = "Qutebrowser";
       exec = "qutebrowser %u";
       icon = "qutebrowser";
-      mimeType = [ "text/html" "x-scheme-handler/http" "x-scheme-handler/https" ];
+      mimeType = [
+        "text/html"
+        "x-scheme-handler/http"
+        "x-scheme-handler/https"
+      ];
     };
     uuctl = {
       name = "Uuctl";

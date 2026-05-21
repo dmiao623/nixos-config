@@ -25,25 +25,33 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, nixvim, ... }@inputs: {
-    nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux";
-      specialArgs = { inherit inputs; };
-      modules = [
-        ./hosts/nixos/configuration.nix
-        home-manager.nixosModules.home-manager
-        {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.extraSpecialArgs = {
-            inherit inputs;
-            oilTreeNvim  = inputs.oil-tree-nvim;
-            cilantroNvim = inputs.cilantro-nvim;
-          };
-          home-manager.sharedModules = [ nixvim.homeModules.nixvim ];
-          home-manager.users.dustinm = import ./modules/home/dustinm.nix;
-        }
-      ];
+  outputs =
+    {
+      self,
+      nixpkgs,
+      home-manager,
+      nixvim,
+      ...
+    }@inputs:
+    {
+      nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = { inherit inputs; };
+        modules = [
+          ./hosts/nixos/configuration.nix
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.extraSpecialArgs = {
+              inherit inputs;
+              oilTreeNvim = inputs.oil-tree-nvim;
+              cilantroNvim = inputs.cilantro-nvim;
+            };
+            home-manager.sharedModules = [ nixvim.homeModules.nixvim ];
+            home-manager.users.dustinm = import ./modules/home/dustinm.nix;
+          }
+        ];
+      };
     };
-  };
 }

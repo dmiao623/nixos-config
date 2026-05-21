@@ -3,7 +3,7 @@
 let
   oil-tree-plugin = pkgs.vimUtils.buildVimPlugin {
     name = "oil-tree-nvim";
-    src  = oilTreeNvim;
+    src = oilTreeNvim;
   };
 in
 

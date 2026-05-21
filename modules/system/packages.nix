@@ -21,6 +21,7 @@
     kitty
     lf
     neofetch
+    nixfmt-classic
     nixfmt-tree
     osu-lazer
     qutebrowser

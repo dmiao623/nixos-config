@@ -5,11 +5,11 @@
     enable = true;
 
     servers = {
-      bashls.enable    = true;
-      cssls.enable     = true;
-      html.enable      = true;
-      jsonls.enable    = true;
-      ltex.enable      = true;
+      bashls.enable = true;
+      cssls.enable = true;
+      html.enable = true;
+      jsonls.enable = true;
+      ltex.enable = true;
       lua_ls = {
         enable = true;
         settings = {
@@ -17,19 +17,35 @@
           Lua.completion.callSnippet = "Replace";
         };
       };
-      marksman.enable  = true;
-      pyright.enable   = true;
-      yamlls.enable    = true;
+      marksman.enable = true;
+      pyright.enable = true;
+      yamlls.enable = true;
     };
 
     keymaps = {
       lspBuf = {
-        "gD"          = { action = "declaration"; desc = "(lsp) Go to declaration"; };
-        "<leader>rn"  = { action = "rename";      desc = "(lsp) Smart rename"; };
+        "gD" = {
+          action = "declaration";
+          desc = "(lsp) Go to declaration";
+        };
+        "<leader>rn" = {
+          action = "rename";
+          desc = "(lsp) Smart rename";
+        };
       };
       extra = [
-        { mode = "n"; key = "gR"; action = "<cmd>Telescope lsp_references<CR>";  options.desc = "(telescope, lsp) Show LSP references"; }
-        { mode = "n"; key = "gd"; action = "<cmd>Telescope lsp_definitions<CR>"; options.desc = "(lsp) Show LSP definitions"; }
+        {
+          mode = "n";
+          key = "gR";
+          action = "<cmd>Telescope lsp_references<CR>";
+          options.desc = "(telescope, lsp) Show LSP references";
+        }
+        {
+          mode = "n";
+          key = "gd";
+          action = "<cmd>Telescope lsp_definitions<CR>";
+          options.desc = "(lsp) Show LSP definitions";
+        }
       ];
     };
 

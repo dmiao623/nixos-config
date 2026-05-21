@@ -136,7 +136,6 @@ in
         "$mod, mouse:273, resizewindow"
       ];
 
-
       # Touchpad gestures
       gesture = [ "3, horizontal, workspace" ];
 
@@ -160,7 +159,6 @@ in
       submap = reset
     '';
   };
-
 
   home.pointerCursor = {
     name = "Adwaita";

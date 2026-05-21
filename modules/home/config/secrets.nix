@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 {
   sops = {
@@ -25,5 +30,9 @@
     };
   };
 
-  home.packages = with pkgs; [ sops ssh-to-age age ];
+  home.packages = with pkgs; [
+    sops
+    ssh-to-age
+    age
+  ];
 }

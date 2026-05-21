@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 {
   programs.zsh = {
@@ -14,13 +19,13 @@
     };
 
     history = {
-      append                = true;
-      save                  = 1000;
-      size                  = 1000;
-      findNoDups            = true;
-      saveNoDups            = false;
-      ignoreDups            = true;
-      ignoreSpace           = false;
+      append = true;
+      save = 1000;
+      size = 1000;
+      findNoDups = true;
+      saveNoDups = false;
+      ignoreDups = true;
+      ignoreSpace = false;
       expireDuplicatesFirst = true;
     };
 
@@ -70,7 +75,9 @@
     };
 
     envExtra = ''
-      [ -f "${config.sops.templates."api-tokens.env".path}" ] && source "${config.sops.templates."api-tokens.env".path}"
+      [ -f "${config.sops.templates."api-tokens.env".path}" ] && source "${
+        config.sops.templates."api-tokens.env".path
+      }"
     '';
 
     initContent = lib.mkOrder 1500 ''

@@ -3,7 +3,7 @@
 let
   cilantro-plugin = pkgs.vimUtils.buildVimPlugin {
     name = "cilantro-nvim";
-    src  = cilantroNvim;
+    src = cilantroNvim;
   };
 in
 

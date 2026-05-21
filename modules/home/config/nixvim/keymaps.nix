@@ -4,22 +4,69 @@
   programs.nixvim = {
     keymaps = [
       # Replace default bindings
-      { mode = "n"; key = "x";     action = ''"_x''; }
-      { mode = "n"; key = "c";     action = ''"_c''; }
-      { mode = "x"; key = "V";     action = "j"; }
-      { mode = "n"; key = "<Esc>"; action = ":nohl<CR>:echo<CR>"; options.silent = true; }
+      {
+        mode = "n";
+        key = "x";
+        action = ''"_x'';
+      }
+      {
+        mode = "n";
+        key = "c";
+        action = ''"_c'';
+      }
+      {
+        mode = "x";
+        key = "V";
+        action = "j";
+      }
+      {
+        mode = "n";
+        key = "<Esc>";
+        action = ":nohl<CR>:echo<CR>";
+        options.silent = true;
+      }
 
       # Splits
-      { mode = "n"; key = "<leader>sv"; action = "<cmd>vsplit<CR>"; options.desc = "Create vertical split"; }
-      { mode = "n"; key = "<leader>sh"; action = "<cmd>split<CR>";  options.desc = "Create horizontal split"; }
-      { mode = "n"; key = "<leader>se"; action = "<C-w>=";          options.desc = "Equalize splits"; }
-      { mode = "n"; key = "<leader>sx"; action = "<cmd>close<CR>";  options.desc = "Close current split"; }
+      {
+        mode = "n";
+        key = "<leader>sv";
+        action = "<cmd>vsplit<CR>";
+        options.desc = "Create vertical split";
+      }
+      {
+        mode = "n";
+        key = "<leader>sh";
+        action = "<cmd>split<CR>";
+        options.desc = "Create horizontal split";
+      }
+      {
+        mode = "n";
+        key = "<leader>se";
+        action = "<C-w>=";
+        options.desc = "Equalize splits";
+      }
+      {
+        mode = "n";
+        key = "<leader>sx";
+        action = "<cmd>close<CR>";
+        options.desc = "Close current split";
+      }
 
       # Oil file explorer
-      { mode = "n"; key = "<leader>e"; action = "<cmd>Oil<CR>"; options.desc = "(oil) Opens file explorer"; }
+      {
+        mode = "n";
+        key = "<leader>e";
+        action = "<cmd>Oil<CR>";
+        options.desc = "(oil) Opens file explorer";
+      }
 
       # Toggles (invoke user commands defined in extraLuaConfig below)
-      { mode = "n"; key = "<leader>tw"; action = "<cmd>WrapToggle<CR>";        options.desc = "Toggle wrap"; }
+      {
+        mode = "n";
+        key = "<leader>tw";
+        action = "<cmd>WrapToggle<CR>";
+        options.desc = "Toggle wrap";
+      }
     ];
 
     extraConfigLua = ''

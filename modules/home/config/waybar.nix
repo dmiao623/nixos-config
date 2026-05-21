@@ -62,9 +62,21 @@ in
         margin-right = 10;
         spacing = 0;
 
-        modules-left = [ "custom/power" "hyprland/workspaces" ];
+        modules-left = [
+          "custom/power"
+          "hyprland/workspaces"
+        ];
         modules-center = [ ];
-        modules-right = [ "group/spotify" "group/volume" "group/brightness" "group/bluetooth" "group/network" "battery" "clock" "clock#date" ];
+        modules-right = [
+          "group/spotify"
+          "group/volume"
+          "group/brightness"
+          "group/bluetooth"
+          "group/network"
+          "battery"
+          "clock"
+          "clock#date"
+        ];
 
         "hyprland/workspaces" = {
           format = "{id} {windows}";
@@ -93,14 +105,21 @@ in
             transition-duration = 300;
             transition-left-to-right = true;
           };
-          modules = [ "pulseaudio" "pulseaudio/slider" ];
+          modules = [
+            "pulseaudio"
+            "pulseaudio/slider"
+          ];
         };
 
         pulseaudio = {
           format = "{icon}";
           format-muted = "󰝟";
           format-icons = {
-            default = [ "󰕿" "󰖀" "󰕾" ];
+            default = [
+              "󰕿"
+              "󰖀"
+              "󰕾"
+            ];
           };
           tooltip-format = "{volume}%";
           on-click = "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
@@ -119,12 +138,19 @@ in
             transition-duration = 300;
             transition-left-to-right = true;
           };
-          modules = [ "backlight" "backlight/slider" ];
+          modules = [
+            "backlight"
+            "backlight/slider"
+          ];
         };
 
         backlight = {
           format = "{icon}";
-          format-icons = [ "󰃞" "󰃟" "󰃠" ];
+          format-icons = [
+            "󰃞"
+            "󰃟"
+            "󰃠"
+          ];
           tooltip-format = "{percent}% brightness";
         };
 
@@ -141,7 +167,10 @@ in
             transition-duration = 300;
             transition-left-to-right = true;
           };
-          modules = [ "bluetooth#icon" "bluetooth#status" ];
+          modules = [
+            "bluetooth#icon"
+            "bluetooth#status"
+          ];
         };
 
         "bluetooth#icon" = {
@@ -165,14 +194,23 @@ in
             transition-duration = 300;
             transition-left-to-right = true;
           };
-          modules = [ "network#icon" "network#name" ];
+          modules = [
+            "network#icon"
+            "network#name"
+          ];
         };
 
         "network#icon" = {
           format-wifi = "{icon}";
           format-ethernet = "";
           format-disconnected = "󰤮";
-          format-icons = [ "󰤯" "󰤟" "󰤢" "󰤥" "󰤨" ];
+          format-icons = [
+            "󰤯"
+            "󰤟"
+            "󰤢"
+            "󰤥"
+            "󰤨"
+          ];
           tooltip-format-wifi = "{essid} ({signalStrength}%)";
           on-click = "networkmanager_dmenu";
         };
@@ -204,7 +242,18 @@ in
           format = "{icon} {capacity}%";
           format-charging = "󰂄 {capacity}%";
           format-plugged = "󰚥 {capacity}%";
-          format-icons = [ "󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹" ];
+          format-icons = [
+            "󰁺"
+            "󰁻"
+            "󰁼"
+            "󰁽"
+            "󰁾"
+            "󰁿"
+            "󰂀"
+            "󰂁"
+            "󰂂"
+            "󰁹"
+          ];
         };
 
         "group/spotify" = {
@@ -213,7 +262,10 @@ in
             transition-duration = 300;
             transition-left-to-right = true;
           };
-          modules = [ "custom/spotify-icon" "custom/spotify-info" ];
+          modules = [
+            "custom/spotify-icon"
+            "custom/spotify-info"
+          ];
         };
 
         "custom/spotify-icon" = {
