@@ -8,6 +8,14 @@
       extensions = with pkgs.vscode-extensions; [
         anthropic.claude-code
         jeff-hykin.better-nix-syntax
+        ms-python.debugpy
+        ms-python.python
+        ms-python.vscode-pylance
+        ms-toolsai.jupyter
+        ms-toolsai.jupyter-keymap
+        ms-toolsai.jupyter-renderers
+        ms-toolsai.vscode-jupyter-cell-tags
+        ms-toolsai.vscode-jupyter-slideshow
         vscode-icons-team.vscode-icons
         vscodevim.vim
       ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
@@ -16,6 +24,12 @@
           publisher = "sainnhe";
           version = "0.2.9";
           sha256 = "sha256-5b3XPCH6h8FYVyn6Iws2j7lIwHSaQE5glaBnmhGErIk=";
+        }
+        {
+          name = "vscode-python-envs";
+          publisher = "ms-python";
+          version = "1.30.0";
+          sha256 = "0mpsn1bkcxnyf0kki4xfmvslgdpipn0bwf4xl45afwfxw25rp5l7";
         }
       ];
 
