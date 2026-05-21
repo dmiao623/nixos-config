@@ -10,7 +10,6 @@
         font = "monospace:size=9";
         width = 35;
         lines = 8;
-        icon-size = 16;
       };
       colors = {
         background = "2e3440ff";
