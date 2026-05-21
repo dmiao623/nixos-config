@@ -21,6 +21,7 @@
     kitty
     lf
     neofetch
+    nixfmt
     osu-lazer
     qutebrowser
     ripdrag
