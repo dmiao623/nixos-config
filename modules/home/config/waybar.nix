@@ -248,7 +248,7 @@ in
             if [ "$STATUS" = "Playing" ] || [ "$STATUS" = "Paused" ]; then
               ARTIST=$(${pkgs.playerctl}/bin/playerctl --player=spotify metadata artist 2>/dev/null)
               TITLE=$(${pkgs.playerctl}/bin/playerctl --player=spotify metadata title 2>/dev/null)
-              echo "{\"text\": \"$ARTIST - $TITLE\"}"
+              ${pkgs.jq}/bin/jq -cn --arg text "$ARTIST - $TITLE" '{text: $text}'
             else
               echo "{\"text\": \"\"}"
             fi
