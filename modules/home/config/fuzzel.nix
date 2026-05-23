@@ -111,6 +111,11 @@
       name = "NixOS Manual";
       noDisplay = true;
     };
+    zotero = {
+      name = "Zotero";
+      exec = "zotero";
+      icon = "zotero";
+    };
     "org.freedesktop.Xwayland" = {
       name = "Xwayland";
       noDisplay = true;

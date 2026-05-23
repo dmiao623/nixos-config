@@ -33,6 +33,7 @@
     wget
     wl-clipboard
     yazi
+    zotero
     zoom-us
   ];
 }
