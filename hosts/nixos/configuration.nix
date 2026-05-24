@@ -4,6 +4,7 @@
   imports = [
     ./hardware.nix
     ../../modules/system/desktop.nix
+    ../../modules/system/docker.nix
     ../../modules/system/packages.nix
   ];
 

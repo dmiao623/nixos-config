@@ -13,6 +13,7 @@
     claude-code
     curl
     discord
+    docker-client
     eza
     gcc
     git
