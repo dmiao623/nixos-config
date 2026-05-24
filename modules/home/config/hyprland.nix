@@ -106,6 +106,10 @@ in
         "$mod SHIFT, K, movewindow, u"
         "$mod SHIFT, J, movewindow, d"
 
+        # Move workspace to other monitor
+        "$mod CTRL, H, movecurrentworkspacetomonitor, l"
+        "$mod CTRL, L, movecurrentworkspacetomonitor, r"
+
         # Screenshots
         ", Print, exec, ${screenshotSave}"
         "SHIFT, Print, exec, ${screenshotClipboard}"
