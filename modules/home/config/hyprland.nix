@@ -50,7 +50,24 @@ in
     settings = {
       "$mod" = "SUPER";
 
-      monitor = [ ", preferred, auto, 1" ];
+      monitor = [
+        "eDP-1, 1920x1200@60, 0x0, 1"
+        "HDMI-A-1, 3840x2160@30, auto-left, 1.5"
+        ", preferred, auto, 1" # fallback for any other monitor
+      ];
+
+      workspace = [
+        "1, monitor:HDMI-A-1, default:true"
+        "2, monitor:HDMI-A-1"
+        "3, monitor:HDMI-A-1"
+        "4, monitor:HDMI-A-1"
+        "5, monitor:HDMI-A-1"
+        "6, monitor:eDP-1, default:true"
+        "7, monitor:eDP-1"
+        "8, monitor:eDP-1"
+        "9, monitor:eDP-1"
+        "10, monitor:eDP-1"
+      ];
 
       general = {
         gaps_in = 5;
@@ -155,6 +172,8 @@ in
       bind = , V, submap, reset
       bind = , C, exec, kitty -- nvim -c "Cilantro"
       bind = , C, submap, reset
+      bind = , D, exec, wdisplays
+      bind = , D, submap, reset
       bind = , escape, submap, reset
       submap = reset
     '';
@@ -179,6 +198,7 @@ in
     hyprshot
     slurp
     swaybg
+    wdisplays
     wireplumber
     zenity
   ];

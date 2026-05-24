@@ -83,7 +83,7 @@ in
           format-window-separator = " ";
           on-click = "activate";
           sort-by-number = true;
-          all-outputs = true;
+          all-outputs = false;
           active-only = false;
           window-rewrite-default = "󰂣";
           window-rewrite = {
