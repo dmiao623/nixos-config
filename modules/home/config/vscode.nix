@@ -12,6 +12,7 @@
         with pkgs.vscode-extensions;
         [
           anthropic.claude-code
+          james-yu.latex-workshop
           jnoortheen.nix-ide
           ms-python.debugpy
           ms-python.python
