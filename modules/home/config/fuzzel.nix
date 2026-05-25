@@ -111,6 +111,11 @@
       name = "NixOS Manual";
       noDisplay = true;
     };
+    slack = {
+      name = "Slack";
+      exec = "slack";
+      icon = "slack";
+    };
     zotero = {
       name = "Zotero";
       exec = "zotero";

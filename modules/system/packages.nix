@@ -27,6 +27,7 @@
     osu-lazer
     qutebrowser
     ripdrag
+    slack
     ripgrep
     spotify
     unzip
