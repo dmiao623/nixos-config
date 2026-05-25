@@ -15,6 +15,7 @@ in
       require("cilantro").setup({
         task_dir = "~/Cilantro",
         timezone = "-04:00",
+        show_paths = false,
         list_columns = { "status", "title" },
         layout = {
           ratio = { 1, 2, 2 },

@@ -5,11 +5,11 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1779742965,
-        "narHash": "sha256-NgZN37M4U48o4tOrrhr6HL7Es5mBXNb4/LRUfJB/ruQ=",
+        "lastModified": 1779752770,
+        "narHash": "sha256-W38annItDlFfIBRqg/JEGQMe9Egd3o7zNGyCc/67x+0=",
         "owner": "dmiao623",
         "repo": "cilantro.nvim",
-        "rev": "a6d3ab97b555cb5eb1e3db4c69fa22c669f05637",
+        "rev": "e2e636f065074fc425ad847850cf26f05a195ef1",
         "type": "github"
       },
       "original": {
