@@ -14,6 +14,7 @@
           anthropic.claude-code
           james-yu.latex-workshop
           jnoortheen.nix-ide
+          mkhl.direnv
           ms-python.debugpy
           ms-python.python
           ms-python.vscode-pylance
