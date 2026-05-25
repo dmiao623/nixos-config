@@ -1,1 +1,1 @@
-Build with `sudo nixos-rebuild switch --flake ~/nixos-config#nixos`.
+Build with `sudo nixos-rebuild switch --flake ~/nixos-config#nixos`. Update inputs in `flake.lock` with `sudo nix flake update [input-name]`. 

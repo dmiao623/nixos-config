@@ -1,13 +1,15 @@
 {
   "nodes": {
     "cilantro-nvim": {
-      "flake": false,
+      "inputs": {
+        "nixpkgs": "nixpkgs"
+      },
       "locked": {
-        "lastModified": 1779225046,
-        "narHash": "sha256-XX7i2z1pCnOcJWpl97N0PhkpAwVuK9bkr7aFh7EoSjY=",
+        "lastModified": 1779742965,
+        "narHash": "sha256-NgZN37M4U48o4tOrrhr6HL7Es5mBXNb4/LRUfJB/ruQ=",
         "owner": "dmiao623",
         "repo": "cilantro.nvim",
-        "rev": "e882114a7b484b821de14f913f0bed71397cf5c8",
+        "rev": "a6d3ab97b555cb5eb1e3db4c69fa22c669f05637",
         "type": "github"
       },
       "original": {
@@ -124,6 +126,22 @@
     },
     "nixpkgs": {
       "locked": {
+        "lastModified": 1779694939,
+        "narHash": "sha256-Ly4j75O8ICaSQx3uxPnwk2x7PMF0XQvn5r0c3yBA7FI=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "f9d8b65950353691ab56561e7c73d2e1063d810b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixpkgs-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_2": {
+      "locked": {
         "lastModified": 1778430510,
         "narHash": "sha256-Ti+ZBvW6yrWWAg2szExVTwCd4qOJ3KlVr1tFHfyfi8Q=",
         "owner": "NixOS",
@@ -138,7 +156,7 @@
         "type": "github"
       }
     },
-    "nixpkgs_2": {
+    "nixpkgs_3": {
       "locked": {
         "lastModified": 1779694939,
         "narHash": "sha256-Ly4j75O8ICaSQx3uxPnwk2x7PMF0XQvn5r0c3yBA7FI=",
@@ -204,7 +222,7 @@
     "oil-tree-nvim": {
       "inputs": {
         "flake-utils": "flake-utils_2",
-        "nixpkgs": "nixpkgs_2"
+        "nixpkgs": "nixpkgs_3"
       },
       "locked": {
         "lastModified": 1779742929,
@@ -224,7 +242,7 @@
       "inputs": {
         "cilantro-nvim": "cilantro-nvim",
         "home-manager": "home-manager",
-        "nixpkgs": "nixpkgs",
+        "nixpkgs": "nixpkgs_2",
         "nixvim": "nixvim",
         "oil-tree-nvim": "oil-tree-nvim",
         "sops-nix": "sops-nix"
