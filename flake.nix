@@ -16,12 +16,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     oil-tree-nvim = {
-      url = "github:dmiao623/oil-tree.nvim/d73e9a571dd2250dbc51d461bf78d50c06b8eab0";
-      flake = false;
+      url = "github:dmiao623/oil-tree.nvim";
     };
     cilantro-nvim = {
       url = "github:dmiao623/cilantro.nvim";
-      flake = false;
     };
   };
 
