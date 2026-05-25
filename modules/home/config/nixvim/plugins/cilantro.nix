@@ -14,12 +14,14 @@ in
     extraConfigLua = ''
       require("cilantro").setup({
         task_dir = "~/Tasks",
-        timezone = "-07:00",
+        timezone = "-04:00",
         list_columns = { "status", "title" },
+
         layout = {
           ratio = { 1, 2, 2 },
           file_tree = "Oil",
         },
+
       })
     '';
   };
