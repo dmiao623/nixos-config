@@ -28,6 +28,7 @@
     qutebrowser
     ripdrag
     slack
+    rclone
     ripgrep
     spotify
     unzip

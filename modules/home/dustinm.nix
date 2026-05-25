@@ -10,6 +10,7 @@
 
     ./config/bat.nix
     ./config/claude.nix
+    ./config/direnv.nix
     ./config/fuzzel.nix
     ./config/fzf.nix
     ./config/git.nix
@@ -22,6 +23,7 @@
     ./config/yazi.nix
     ./config/zsh.nix
     ./config/nixvim.nix
+    ./config/rclone.nix
   ];
 
   home.username = "dustinm";
