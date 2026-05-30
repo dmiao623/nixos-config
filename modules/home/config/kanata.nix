@@ -10,7 +10,7 @@
   xdg.configFile."kanata/thinkpad.kbd".text = ''
     (defcfg
       process-unmapped-keys yes
-      linux-dev-names-include ("AT Translated Set 2 keyboard")
+      linux-dev /dev/input/by-path/platform-i8042-serio-0-event-kbd
     )
     (defsrc
       caps bspc rsft lmet lalt
