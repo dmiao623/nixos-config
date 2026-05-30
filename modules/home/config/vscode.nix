@@ -118,6 +118,20 @@
             };
           };
         };
+        "latex-workshop.latex.tools" = [
+          {
+            "name" = "latexmk";
+            "command" = "latexmk";
+            "args" = [
+              "-shell-escape"
+              "-synctex=1"
+              "-interaction=nonstopmode"
+              "-file-line-error"
+              "-pdf"
+              "%DOC%"
+            ];
+          }
+        ];
         "workbench.colorTheme" = "Sonokai Shusia";
         "workbench.iconTheme" = "vscode-icons";
       };
