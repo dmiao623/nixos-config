@@ -72,6 +72,14 @@
         };
         "vim.normalModeKeyBindingsNonRecursive" = [
           {
+            before = [ "j" ];
+            after = [ "g" "j" ];
+          }
+          {
+            before = [ "k" ];
+            after = [ "g" "k" ];
+          }
+          {
             before = [
               "<C-w>"
               "h"
