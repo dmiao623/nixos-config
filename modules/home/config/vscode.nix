@@ -15,6 +15,7 @@
           james-yu.latex-workshop
           jnoortheen.nix-ide
           mkhl.direnv
+          charliermarsh.ruff
           ms-python.debugpy
           ms-python.python
           ms-python.vscode-pylance
@@ -73,11 +74,17 @@
         "vim.normalModeKeyBindingsNonRecursive" = [
           {
             before = [ "j" ];
-            after = [ "g" "j" ];
+            after = [
+              "g"
+              "j"
+            ];
           }
           {
             before = [ "k" ];
-            after = [ "g" "k" ];
+            after = [
+              "g"
+              "k"
+            ];
           }
           {
             before = [
