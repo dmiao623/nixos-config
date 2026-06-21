@@ -7,7 +7,7 @@
     enable = true;
 
     font.name = "FiraCode Nerd Font Mono";
-    font.size = 12.0;
+    font.size = 10.0;
     shellIntegration.mode = "no-cursor";
 
     keybindings = {

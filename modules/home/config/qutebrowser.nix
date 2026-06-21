@@ -62,11 +62,11 @@ in
       };
 
       fonts = {
-        hints = "bold 14pt default_family";
-        statusbar = "16pt default_family";
+        hints = "bold 10pt default_family";
+        statusbar = "10pt default_family";
         tabs = {
-          selected = "14pt default_family";
-          unselected = "14pt default_family";
+          selected = "10pt default_family";
+          unselected = "10pt default_family";
         };
       };
 

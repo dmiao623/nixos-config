@@ -11,15 +11,14 @@
     ./config/bat.nix
     ./config/claude.nix
     ./config/direnv.nix
-    ./config/fuzzel.nix
+
     ./config/fzf.nix
     ./config/git.nix
     ./config/qutebrowser.nix
     ./config/kitty.nix
-    ./config/hyprland.nix
+    ./config/sway.nix
     ./config/kanata.nix
     ./config/vscode.nix
-    ./config/waybar.nix
     ./config/yazi.nix
     ./config/zsh.nix
     ./config/nixvim.nix

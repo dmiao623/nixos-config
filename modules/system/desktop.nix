@@ -1,13 +1,15 @@
 { pkgs, ... }:
 
 {
-  programs.hyprland.enable = true;
-  programs.hyprland.withUWSM = true;
+  programs.sway = {
+    enable = true;
+    wrapperFeatures.gtk = true;
+  };
 
   xdg.portal = {
     enable = true;
     extraPortals = with pkgs; [
-      xdg-desktop-portal-hyprland
+      xdg-desktop-portal-wlr
       xdg-desktop-portal-gtk
     ];
   };
@@ -15,7 +17,7 @@
   services.greetd = {
     enable = true;
     settings.default_session = {
-      command = "${pkgs.tuigreet}/bin/tuigreet --time --cmd Hyprland";
+      command = "${pkgs.tuigreet}/bin/tuigreet --time --cmd sway";
       user = "greeter";
     };
   };

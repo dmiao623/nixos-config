@@ -17,7 +17,7 @@
     eza
     gcc
     git
-    htop
+    gotop
     jq
     kitty
     lf
