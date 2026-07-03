@@ -15,6 +15,7 @@
         "cpp"
         "json"
         "julia"
+        "latex"
         "lua"
         "luadoc"
         "markdown"

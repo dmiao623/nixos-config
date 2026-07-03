@@ -9,6 +9,8 @@
         formatters_by_ft = {
           python = [ "ruff_format" ];
           nix = [ "nixfmt" ];
+          tex = [ "tex_fmt" ];
+          bib = [ "tex_fmt" ];
         };
 
         format_on_save = {
@@ -26,7 +28,10 @@
 
     keymaps = [
       {
-        mode = [ "n" "v" ];
+        mode = [
+          "n"
+          "v"
+        ];
         key = "<leader>cf";
         action.__raw = ''
           function()
@@ -55,6 +60,7 @@
     extraPackages = with pkgs; [
       ruff
       nixfmt-rfc-style
+      tex-fmt
     ];
   };
 }

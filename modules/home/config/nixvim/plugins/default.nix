@@ -14,6 +14,7 @@
     ./luasnip.nix
     ./blink-cmp.nix
     ./conform.nix
+    ./vimtex.nix
   ];
 
   programs.nixvim.plugins.web-devicons.enable = true;
