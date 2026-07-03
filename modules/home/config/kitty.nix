@@ -12,16 +12,14 @@
 
     keybindings = {
       "cmd+c" = "copy_to_clipboard";
-      "cmd+v" = "paste_from_clipboard";
-      "alt+n" = "new_os_window";
-      "shift+cmd+w" = "close_os_window";
-      "shift+cmd+i" = "set_tab_title";
-      "alt+t" = "new_tab";
-      "alt+w" = "close_tab";
-      "alt+l" = "next_tab";
-      "ctrl+tab" = "next_tab";
-      "alt+h" = "previous_tab";
-      "ctrl+shift+tab" = "previous_tab";
+      "ctrl+shift+c" = "copy_to_clipboard";
+      "ctrl+shift+v" = "paste_from_clipboard";
+      "alt+n" = "launch --cwd=current --type=os-window";
+      "alt+j" = "scroll_line_down";
+      "alt+k" = "scroll_line_up";
+      "alt+shift+j" = "scroll_end";
+      "alt+shift+k" = "scroll_home";
+      "alt+s" = "show_scrollback";
       "cmd+q" = "quit";
       "alt+f" = "send_key alt+f";
       "alt+b" = "send_key alt+b";
@@ -34,13 +32,7 @@
     settings = {
       clear_all_shortcuts = "yes";
       cursor_stop_blinking_after = 0;
-      tab_bar_margin_height = "5.0 2.0";
-      tab_bar_style = "separator";
-      tab_switch_strategy = "right";
-      tab_separator = "\" ┇ \"";
-      tab_bar_min_tabs = 1;
-      tab_title_max_length = 30;
-      tab_title_template = "{bell_symbol}{activity_symbol}{fmt.bold}{index}{fmt.nobold}| {title}";
+      tab_bar_min_tabs = 2;
       paste_actions = "confirm-if-large";
       macos_quit_when_last_window_closed = "yes";
     };
@@ -54,13 +46,6 @@
 
       cursor #e3e1e4
       cursor_text_color background
-
-      active_tab_background #79767a
-      active_tab_foreground #e3e1e4
-      active_tab_font_style bold
-      inactive_tab_background #2d2a2e
-      inactive_tab_foreground #e3e1e4
-      inactive_tab_font_style normal
 
       # Black
       color0 #1a181a
