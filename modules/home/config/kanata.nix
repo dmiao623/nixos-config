@@ -18,31 +18,6 @@
     (deflayer default
       bspc caps esc lalt lmet
     )
-    (defoverrides
-      (lmet c) (lctl c)
-      (lmet v) (lctl v)
-      (lmet a) (lctl a)
-      (lmet z) (lctl z)
-    )
-  '';
-
-  xdg.configFile."kanata/external.kbd".text = ''
-    (defcfg
-      process-unmapped-keys yes
-      linux-dev-names-include ("DasKeyboard")
-    )
-    (defsrc
-      caps bspc rsft
-    )
-    (deflayer default
-      bspc caps esc
-    )
-    (defoverrides
-      (lmet c) (lctl c)
-      (lmet v) (lctl v)
-      (lmet a) (lctl a)
-      (lmet z) (lctl z)
-    )
   '';
 
   systemd.user.services.kanata-thinkpad = {
@@ -59,17 +34,30 @@
     };
   };
 
-  systemd.user.services.kanata-external = {
-    Unit = {
-      Description = "Kanata keyboard remapper (external)";
-    };
-    Service = {
-      Environment = "PATH=${pkgs.kanata}/bin";
-      ExecStart = "${pkgs.kanata}/bin/kanata --cfg %h/.config/kanata/external.kbd";
-      Restart = "always";
-    };
-    Install = {
-      WantedBy = [ "default.target" ];
-    };
-  };
+  # xdg.configFile."kanata/external.kbd".text = ''
+  #   (defcfg
+  #     process-unmapped-keys yes
+  #     linux-dev-names-include ("DasKeyboard")
+  #   )
+  #   (defsrc
+  #     caps bspc rsft
+  #   )
+  #   (deflayer default
+  #     bspc caps esc
+  #   )
+  # '';
+
+  # systemd.user.services.kanata-external = {
+  #   Unit = {
+  #     Description = "Kanata keyboard remapper (external)";
+  #   };
+  #   Service = {
+  #     Environment = "PATH=${pkgs.kanata}/bin";
+  #     ExecStart = "${pkgs.kanata}/bin/kanata --cfg %h/.config/kanata/external.kbd";
+  #     Restart = "always";
+  #   };
+  #   Install = {
+  #     WantedBy = [ "default.target" ];
+  #   };
+  # };
 }

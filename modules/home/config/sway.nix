@@ -61,7 +61,7 @@ let
       builtins.attrValues (
         builtins.mapAttrs (key: ws: [
           "bindsym Mod4+${key} workspace number ${ws}"
-          "bindsym Mod4+Shift+${key} move container to workspace number ${ws}"
+          "bindsym Mod4+Mod1+${key} move container to workspace number ${ws}"
         ]) dvpWorkspaceKeys
       )
     )
@@ -77,6 +77,9 @@ in
 
       input = {
         "type:keyboard" = {
+          xkb_layout = "us";
+        };
+        "1:1:kanata" = {
           xkb_layout = "us";
           xkb_variant = "dvp";
         };
@@ -130,49 +133,6 @@ in
       };
 
       defaultWorkspace = "workspace number 1";
-
-      workspaceOutputAssign = [
-        {
-          workspace = "1";
-          output = "HDMI-A-1 eDP-1";
-        }
-        {
-          workspace = "2";
-          output = "HDMI-A-1 eDP-1";
-        }
-        {
-          workspace = "3";
-          output = "HDMI-A-1 eDP-1";
-        }
-        {
-          workspace = "4";
-          output = "HDMI-A-1 eDP-1";
-        }
-        {
-          workspace = "5";
-          output = "HDMI-A-1 eDP-1";
-        }
-        {
-          workspace = "6";
-          output = "eDP-1";
-        }
-        {
-          workspace = "7";
-          output = "eDP-1";
-        }
-        {
-          workspace = "8";
-          output = "eDP-1";
-        }
-        {
-          workspace = "9";
-          output = "eDP-1";
-        }
-        {
-          workspace = "10";
-          output = "eDP-1";
-        }
-      ];
 
       keybindings =
         let
@@ -240,6 +200,7 @@ in
           "v" = "exec code; mode default";
           "w" = "exec wdisplays; mode default";
           "y" = "exec kitty -- yazi; mode default";
+          "z" = "exec zotero; mode default";
           "Escape" = "mode default";
           "Return" = "mode default";
         };
@@ -265,6 +226,8 @@ in
       gaps outer 0
       gaps inner 0
       ${workspaceBinds}
+      bindsym Mod4+dollar workspace number 1
+      bindsym Mod4+Mod1+dollar move container to workspace number 1
     '';
   };
 
