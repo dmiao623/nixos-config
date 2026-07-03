@@ -11,6 +11,9 @@
     ./indent-blankline.nix
     ./oil-tree.nix
     ./cilantro.nix
+    ./luasnip.nix
+    ./blink-cmp.nix
+    ./conform.nix
   ];
 
   programs.nixvim.plugins.web-devicons.enable = true;

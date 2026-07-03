@@ -21,6 +21,7 @@
 
       ignorecase = true;
       smartcase = true;
+      inccommand = "split";
 
       termguicolors = true;
       background = "dark";
