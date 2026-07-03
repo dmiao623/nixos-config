@@ -6,6 +6,12 @@
 {
   home.file.".claude/settings.json" = {
     text = builtins.toJSON {
+      effortLevel = "medium";
+
+      worktree = {
+        baseRef = "head";
+      };
+
       permissions = {
         additionalDirectories = [
           "/${config.home.homeDirectory}/Projects"
@@ -36,6 +42,22 @@
           "Bash(* --help)"
         ];
       };
+    };
+  };
+
+  home.file.".claude/keybindings.json" = {
+    text = builtins.toJSON {
+      "$schema" = "https://www.schemastore.org/claude-code-keybindings.json";
+      "$docs" = "https://code.claude.com/docs/en/keybindings";
+      bindings = [
+        {
+          context = "Chat";
+          bindings = {
+            "enter" = "chat:newline";
+            "alt+enter" = "chat:submit";
+          };
+        }
+      ];
     };
   };
 }
