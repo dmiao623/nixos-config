@@ -23,6 +23,7 @@
     ./config/zsh.nix
     ./config/nixvim.nix
     ./config/rclone.nix
+    ./config/starship.nix
   ];
 
   home.username = "dustinm";

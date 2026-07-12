@@ -9,8 +9,8 @@
         formatters_by_ft = {
           python = [ "ruff_format" ];
           nix = [ "nixfmt" ];
-          tex = [ "tex_fmt" ];
-          bib = [ "tex_fmt" ];
+          tex = [ "tex-fmt" ];
+          bib = [ "tex-fmt" ];
         };
 
         format_on_save = {

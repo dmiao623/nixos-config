@@ -28,15 +28,10 @@
       expireDuplicatesFirst = true;
     };
 
-    localVariables = {
-      PROMPT = "$ ";
-    };
-
     sessionVariables = {
       LANG = "en_US.UTF-8";
       VISUAL = "nvim";
       EDITOR = "nvim";
-      PS1 = "$ ";
     };
 
     shellAliases = {

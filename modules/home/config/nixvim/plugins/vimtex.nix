@@ -1,13 +1,16 @@
 { ... }:
 
 {
-  programs.nixvim = {
-    globals = {
-      vimtex_view_method = "zathura";
-      vimtex_compiler_method = "latexmk";
-      vimtex_mappings_prefix = "<localleader>";
-      vimtex_quickfix_mode = 0;
-      vimtex_compiler_latexmk = {
+  programs.nixvim.plugins.vimtex = {
+    enable = true;
+    texlivePackage = null;
+
+    settings = {
+      view_method = "zathura";
+      compiler_method = "latexmk";
+      mappings_prefix = "<localleader>";
+      quickfix_mode = 0;
+      compiler_latexmk = {
         aux_dir = "";
         out_dir = "";
         callback = 1;
@@ -21,11 +24,6 @@
           "-interaction=nonstopmode"
         ];
       };
-    };
-
-    plugins.vimtex = {
-      enable = true;
-      texlivePackage = null;
     };
   };
 }
