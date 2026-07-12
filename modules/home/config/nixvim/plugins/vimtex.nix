@@ -6,9 +6,8 @@
     texlivePackage = null;
 
     settings = {
-      view_method = "zathura";
+      view_method = "zathura_simple";
       compiler_method = "latexmk";
-      mappings_prefix = "<localleader>";
       quickfix_mode = 0;
       compiler_latexmk = {
         aux_dir = "";

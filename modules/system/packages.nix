@@ -21,6 +21,7 @@
     eza
     gcc
     git
+    google-chrome
     gotop
     jq
     kitty
