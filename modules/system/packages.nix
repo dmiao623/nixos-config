@@ -26,11 +26,10 @@
     jq
     kitty
     lf
-    neofetch
-    nixfmt-classic
+    nixfmt
     nixfmt-tree
     osu-lazer
-    protonvpn-gui
+    proton-vpn
     qutebrowser
     ripdrag
     slack

@@ -87,7 +87,7 @@
       bindkey '\ed' kill-word
       bindkey '^D' delete-char-or-list
       bindkey '^L' clear-screen
-      neofetch
+      fastfetch
     '';
 
   };

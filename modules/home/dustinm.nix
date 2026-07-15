@@ -11,6 +11,7 @@
     ./config/bat.nix
     ./config/claude.nix
     ./config/direnv.nix
+    ./config/fastfetch.nix
 
     ./config/fzf.nix
     ./config/git.nix

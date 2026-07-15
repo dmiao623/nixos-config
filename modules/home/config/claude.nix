@@ -6,44 +6,46 @@
 }:
 
 let
-  claudeSettings = pkgs.writeText "claude-settings.json" (builtins.toJSON {
-    effortLevel = "medium";
+  claudeSettings = pkgs.writeText "claude-settings.json" (
+    builtins.toJSON {
+      effortLevel = "medium";
 
-    worktree = {
-      baseRef = "head";
-    };
+      worktree = {
+        baseRef = "head";
+      };
 
-    permissions = {
-      additionalDirectories = [
-        "/${config.home.homeDirectory}/Projects"
-        "/${config.home.homeDirectory}/Downloads"
-        "/${config.home.homeDirectory}/nixos-config"
-      ];
+      permissions = {
+        additionalDirectories = [
+          "/${config.home.homeDirectory}/Projects"
+          "/${config.home.homeDirectory}/Downloads"
+          "/${config.home.homeDirectory}/nixos-config"
+        ];
 
-      allow = [
-        "Webfetch(*)"
-        "Read(*)"
+        allow = [
+          "Webfetch(*)"
+          "Read(*)"
 
-        "Bash(ls *)"
-        "Bash(cd *)"
-        "Bash(find *)"
-        "Bash(stat *)"
+          "Bash(ls *)"
+          "Bash(cd *)"
+          "Bash(find *)"
+          "Bash(stat *)"
 
-        "Bash(mkdir *)"
-        "Bash(echo *)"
-        "Bash(touch *)"
-        "Bash(cp *)"
+          "Bash(mkdir *)"
+          "Bash(echo *)"
+          "Bash(touch *)"
+          "Bash(cp *)"
 
-        "Bash(git status *)"
-        "Bash(git diff *)"
-        "Bash(git log *)"
-        "Bash(git branch *)"
+          "Bash(git status *)"
+          "Bash(git diff *)"
+          "Bash(git log *)"
+          "Bash(git branch *)"
 
-        "Bash(* --version)"
-        "Bash(* --help)"
-      ];
-    };
-  });
+          "Bash(* --version)"
+          "Bash(* --help)"
+        ];
+      };
+    }
+  );
 in
 
 {
