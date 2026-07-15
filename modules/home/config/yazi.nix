@@ -3,6 +3,7 @@
 {
   programs.yazi = {
     enable = true;
+    shellWrapperName = "y";
 
     keymap = {
       manager.prepend_keymap = [
