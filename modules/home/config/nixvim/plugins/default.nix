@@ -15,6 +15,7 @@
     ./blink-cmp.nix
     ./conform.nix
     ./vimtex.nix
+    ./neogen.nix
   ];
 
   programs.nixvim.plugins.web-devicons.enable = true;

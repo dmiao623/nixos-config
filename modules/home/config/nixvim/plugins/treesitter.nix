@@ -12,8 +12,11 @@
       ensure_installed = [
         "bash"
         "bibtex"
+        "c"
         "cpp"
         "json"
+        "ocaml"
+        "ocaml_interface"
         "julia"
         "latex"
         "lua"

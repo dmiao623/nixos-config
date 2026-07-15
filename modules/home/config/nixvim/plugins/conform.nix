@@ -11,6 +11,9 @@
           nix = [ "nixfmt" ];
           tex = [ "tex-fmt" ];
           bib = [ "tex-fmt" ];
+          cpp = [ "clang-format" ];
+          c = [ "clang-format" ];
+          ocaml = [ "ocamlformat" ];
         };
 
         format_on_save = {
@@ -59,8 +62,10 @@
 
     extraPackages = with pkgs; [
       ruff
-      nixfmt-rfc-style
+      nixfmt
       tex-fmt
+      clang-tools
+      ocamlformat
     ];
   };
 }
