@@ -183,6 +183,11 @@ in
           "XF86AudioLowerVolume" = "exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-";
           "XF86AudioMute" = "exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
 
+          # Brightness (F5/F6). -n clamps the minimum to 1 so decreasing never
+          # turns the backlight fully off.
+          "XF86MonBrightnessUp" = "exec brightnessctl set 5%+";
+          "XF86MonBrightnessDown" = "exec brightnessctl -n set 5%-";
+
           # Launch mode
           "${mod}+o" = "mode launch";
 
