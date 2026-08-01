@@ -12,8 +12,8 @@
             vim.keymap.set(mode, l, r, { buffer = bufnr, desc = desc })
           end
 
-          map("n", "<leader>h>",    gs.next_hunk,               "(gitsigns) Next Hunk")
-          map("n", "<leader>h<lt>", gs.prev_hunk,               "(gitsigns) Previous Hunk")
+          map("n", "<leader>hj",    gs.next_hunk,               "(gitsigns) Next Hunk")
+          map("n", "<leader>hk",    gs.prev_hunk,               "(gitsigns) Previous Hunk")
           map("n", "<leader>hs",    gs.stage_hunk,              "(gitsigns) Stage hunk")
           map("n", "<leader>hr",    gs.reset_hunk,              "(gitsigns) Reset hunk")
           map("v", "<leader>hs",    function()
@@ -29,9 +29,7 @@
           map("n", "<leader>hb",    function()
             gs.blame_line({ full = true })
           end,                                                   "(gitsigns) Blame line")
-          map("n", "<leader>hB",    gs.toggle_current_line_blame,"(gitsigns) Toggle line blame")
-          map("n", "<leader>hd",    gs.diffthis,                "(gitsigns) Diff this")
-          map("n", "<leader>hD",    function() gs.diffthis("~") end, "(gitsigns) Diff this ~")
+          map("n", "<leader>tb",    gs.toggle_current_line_blame,"(gitsigns) Toggle line blame")
         end
       '';
     };

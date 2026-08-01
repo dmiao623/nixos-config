@@ -35,7 +35,7 @@
           "n"
           "v"
         ];
-        key = "<leader>cf";
+        key = "<leader>mf";
         action.__raw = ''
           function()
             require("conform").format({ lsp_format = "fallback" })

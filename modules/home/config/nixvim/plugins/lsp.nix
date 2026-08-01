@@ -15,7 +15,7 @@
           vim.notify("ocamllsp not attached", vim.log.levels.WARN)
           return
         end
-        client:request("ocamllsp/switchImplIntf", { uri = vim.uri_from_bufnr(bufnr) },
+        client:request("ocamllsp/switchImplIntf", vim.uri_from_bufnr(bufnr),
           function(err, result)
             if err then
               vim.notify(tostring(err), vim.log.levels.ERROR)
@@ -95,15 +95,15 @@
 
     keymaps = {
       lspBuf = {
-        "K" = {
+        "<leader>gk" = {
           action = "hover";
           desc = "(lsp) Show hover info";
         };
-        "gD" = {
+        "<leader>gD" = {
           action = "declaration";
           desc = "(lsp) Go to declaration";
         };
-        "<leader>rn" = {
+        "<leader>gR" = {
           action = "rename";
           desc = "(lsp) Smart rename";
         };
@@ -111,25 +111,25 @@
       extra = [
         {
           mode = "n";
-          key = "<leader>k";
+          key = "<leader>gs";
           action.__raw = "vim.lsp.buf.signature_help";
           options.desc = "(lsp) Show signature help";
         }
         {
           mode = "n";
-          key = "<leader>ss";
+          key = "<leader>gt";
           action = "<cmd>lua _G.switch_source_file()<CR>";
           options.desc = "(lsp) Switch .ml/.mli or .cpp/.hpp";
         }
         {
           mode = "n";
-          key = "gR";
+          key = "<leader>gr";
           action = "<cmd>Telescope lsp_references<CR>";
           options.desc = "(telescope, lsp) Show LSP references";
         }
         {
           mode = "n";
-          key = "gd";
+          key = "<leader>gd";
           action = "<cmd>Telescope lsp_definitions<CR>";
           options.desc = "(lsp) Show LSP definitions";
         }
@@ -147,7 +147,7 @@
         }
         {
           mode = "n";
-          key = "<leader>df";
+          key = "<leader>ds";
           action.__raw = "vim.diagnostic.open_float";
           options.desc = "(diagnostic) Show diagnostic float";
         }

@@ -13,7 +13,7 @@
     keymaps = [
       {
         mode = "n";
-        key = "<leader>nd";
+        key = "<leader>md";
         action = "<cmd>Neogen<CR>";
         options.desc = "(neogen) Generate docstring";
       }
