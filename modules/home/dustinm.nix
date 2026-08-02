@@ -12,7 +12,7 @@
     ./config/claude.nix
     ./config/direnv.nix
     ./config/fastfetch.nix
-
+    ./config/gotop.nix
     ./config/fzf.nix
     ./config/git.nix
     ./config/qutebrowser.nix
