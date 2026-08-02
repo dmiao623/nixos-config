@@ -40,6 +40,12 @@
 
   swapDevices = [ ];
 
+  # Compressed RAM-backed swap (no disk device). Shows up in gotop's swap line.
+  zramSwap = {
+    enable = true;
+    memoryPercent = 50; # cap compressed swap at 50% of RAM
+  };
+
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 }
