@@ -23,6 +23,7 @@
     git
     google-chrome
     gotop
+    imv
     jq
     kitty
     lf
