@@ -17,9 +17,6 @@
     oil-tree-nvim = {
       url = "github:dmiao623/oil-tree.nvim";
     };
-    cilantro-nvim = {
-      url = "github:dmiao623/cilantro.nvim";
-    };
   };
 
   outputs =
@@ -42,7 +39,6 @@
             home-manager.extraSpecialArgs = {
               inherit inputs;
               oilTreeNvim = inputs.oil-tree-nvim;
-              cilantroNvim = inputs.cilantro-nvim;
             };
             home-manager.sharedModules = [ nixvim.homeModules.nixvim ];
             home-manager.users.dustinm = import ./modules/home/dustinm.nix;

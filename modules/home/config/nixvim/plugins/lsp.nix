@@ -4,49 +4,60 @@
   programs.nixvim.extraConfigLua = ''
     vim.lsp.inlay_hint.enable(true)
 
-    -- Switch between .cpp/.hpp (clangd) or .ml/.mli (ocamllsp)
+    -- Switch between source and interface/header by filename, on disk.
     function _G.switch_source_file()
-      local bufnr = vim.api.nvim_get_current_buf()
-      local ft = vim.bo[bufnr].filetype
-
-      if ft == "ocaml" or ft == "ocaml.interface" or ft == "ocaml.menhir" then
-        local client = vim.lsp.get_clients({ bufnr = bufnr, name = "ocamllsp" })[1]
-        if not client then
-          vim.notify("ocamllsp not attached", vim.log.levels.WARN)
-          return
-        end
-        client:request("ocamllsp/switchImplIntf", vim.uri_from_bufnr(bufnr),
-          function(err, result)
-            if err then
-              vim.notify(tostring(err), vim.log.levels.ERROR)
-              return
-            end
-            if result and result[1] then
-              vim.cmd.edit(vim.uri_to_fname(result[1]))
-            end
-          end, bufnr)
-      else
-        local client = vim.lsp.get_clients({ bufnr = bufnr, name = "clangd" })[1]
-        if not client then
-          vim.notify("clangd not attached", vim.log.levels.WARN)
-          return
-        end
-        local params = vim.lsp.util.make_text_document_params(bufnr)
-        client:request("textDocument/switchSourceHeader", params,
-          function(err, result)
-            if err then
-              vim.notify(tostring(err), vim.log.levels.ERROR)
-              return
-            end
-            if result then
-              vim.cmd.edit(vim.uri_to_fname(result))
-            else
-              vim.notify("No matching source/header file", vim.log.levels.INFO)
-            end
-          end, bufnr)
+      local path = vim.api.nvim_buf_get_name(0)
+      if path == "" then
+        vim.notify("switch: no file in buffer", vim.log.levels.WARN)
+        return
       end
+
+      local dir = vim.fn.fnamemodify(path, ":h")
+      local stem = vim.fn.fnamemodify(path, ":t:r")
+      local ext = vim.fn.fnamemodify(path, ":e")
+
+      -- Ordered candidate counterpart extensions per source extension.
+      local counterparts = {
+        ml = { "mli" },
+        mli = { "ml" },
+        mll = { "mli" },
+        mly = { "mli" },
+        c = { "h" },
+        cc = { "hh", "hpp", "h" },
+        cpp = { "hpp", "hh", "h" },
+        cxx = { "hxx", "hpp", "h" },
+        h = { "c", "cpp", "cc", "cxx" },
+        hh = { "cc", "cpp", "cxx" },
+        hpp = { "cpp", "cc", "cxx" },
+        hxx = { "cxx", "cpp", "cc" },
+      }
+
+      local candidates = counterparts[ext]
+      if not candidates then
+        vim.notify("switch: no rule for ." .. ext, vim.log.levels.INFO)
+        return
+      end
+
+      for _, cext in ipairs(candidates) do
+        local target = dir .. "/" .. stem .. "." .. cext
+        if vim.fn.filereadable(target) == 1 then
+          vim.cmd.edit(target)
+          return
+        end
+      end
+
+      vim.notify("switch: no counterpart for " .. stem .. "." .. ext, vim.log.levels.INFO)
     end
   '';
+
+  programs.nixvim.keymaps = [
+    {
+      mode = "n";
+      key = "<leader>gt";
+      action = "<cmd>lua _G.switch_source_file()<CR>";
+      options.desc = "Switch source/interface (.ml/.mli, .c/.h) by filename";
+    }
+  ];
 
   programs.nixvim.plugins.lsp = {
     enable = true;
@@ -114,12 +125,6 @@
           key = "<leader>gs";
           action.__raw = "vim.lsp.buf.signature_help";
           options.desc = "(lsp) Show signature help";
-        }
-        {
-          mode = "n";
-          key = "<leader>gt";
-          action = "<cmd>lua _G.switch_source_file()<CR>";
-          options.desc = "(lsp) Switch .ml/.mli or .cpp/.hpp";
         }
         {
           mode = "n";

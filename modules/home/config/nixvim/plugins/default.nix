@@ -10,7 +10,6 @@
     ./comment.nix
     ./indent-blankline.nix
     ./oil-tree.nix
-    ./cilantro.nix
     ./luasnip.nix
     ./blink-cmp.nix
     ./conform.nix

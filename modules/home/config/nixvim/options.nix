@@ -5,6 +5,11 @@
     globals = {
       netrw_liststyle = 3;
       python_recommended_style = 0;
+      # Disable the built-in OCaml ftplugin's buffer-local mappings, which
+      # otherwise claim <LocalLeader>s/t/c (= Space s/t/c, since localleader is
+      # Space) in .ml/.mli buffers and shadow our own leader keys. Space t there
+      # triggered the legacy ".annot" type lookup that dune/merlin never produce.
+      no_ocaml_maps = 1;
     };
 
     opts = {

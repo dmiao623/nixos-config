@@ -196,7 +196,6 @@ in
       modes = {
         launch = {
           "b" = "exec bitwarden; mode default";
-          "c" = "exec kitty -- nvim -c Cilantro; mode default";
           "d" = "exec discord; mode default";
           "k" = "exec kitty; mode default";
           "o" = "exec osu!; mode default";
@@ -264,13 +263,6 @@ in
     package = pkgs.adwaita-icon-theme;
     size = 24;
     gtk.enable = true;
-  };
-
-  xdg.desktopEntries.cilantro = {
-    name = "Cilantro";
-    exec = "kitty -- nvim -c Cilantro";
-    icon = ../../../assets/cilantro.svg;
-    terminal = false;
   };
 
   home.packages = with pkgs; [

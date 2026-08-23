@@ -12,8 +12,14 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "nixos";
-  networking.networkmanager.enable = true;
+  networking = {
+    hostName = "nixos";
+    networkmanager = {
+      enable = true;
+      wifi.backend = "iwd";
+      wifi.powersave = false;
+    };
+  };
 
   environment.etc."NetworkManager/conf.d/credentials.conf".text = ''
     [connection]
