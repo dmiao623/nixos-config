@@ -198,6 +198,7 @@ in
           "b" = "exec bitwarden; mode default";
           "d" = "exec discord; mode default";
           "k" = "exec kitty; mode default";
+          "l" = "exec slack; mode default";
           "o" = "exec osu!; mode default";
           "q" = "exec qutebrowser; mode default";
           "s" = "exec spotify; mode default";
