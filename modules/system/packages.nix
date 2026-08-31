@@ -14,6 +14,7 @@
   environment.systemPackages = with pkgs; [
     bat
     bitwarden-desktop
+    btop
     claude-code
     curl
     discord
@@ -22,7 +23,6 @@
     gcc
     git
     google-chrome
-    gotop
     imv
     jq
     kitty
