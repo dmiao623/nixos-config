@@ -22,6 +22,7 @@
     eza
     gcc
     git
+    glow
     google-chrome
     imv
     jq
@@ -34,7 +35,6 @@
     qutebrowser
     ripdrag
     slack
-    rclone
     ripgrep
     spotify
     texlive.combined.scheme-medium
