@@ -26,6 +26,9 @@
       "alt+d" = "send_key alt+d";
       "cmd+plus" = "change_font_size all +2.0";
       "cmd+minus" = "change_font_size all -2.0";
+      "ctrl+shift+equal" = "change_font_size all +2.0";
+      "ctrl+shift+minus" = "change_font_size all -2.0";
+      "ctrl+shift+0" = "change_font_size all 0";
       "cmd+k" = "clear_terminal to_cursor active";
     };
 
