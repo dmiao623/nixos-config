@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 
 {
   nixpkgs.config.allowUnfree = true;
@@ -16,6 +16,7 @@
     bitwarden-desktop
     btop
     claude-code
+    codex
     curl
     discord
     docker-client
@@ -24,6 +25,7 @@
     git
     glow
     google-chrome
+    inputs.grok-bot-flake.packages.${pkgs.system}.grok-bot
     imv
     jq
     kitty

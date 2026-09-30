@@ -17,6 +17,10 @@
     oil-tree-nvim = {
       url = "github:dmiao623/oil-tree.nvim";
     };
+    grok-bot-flake = {
+      url = "github:jordangarrison/grok-bot-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =

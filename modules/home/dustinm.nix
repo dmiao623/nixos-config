@@ -10,6 +10,7 @@
 
     ./config/bat.nix
     ./config/claude.nix
+    ./config/codex.nix
     ./config/direnv.nix
     ./config/fastfetch.nix
     ./config/gotop.nix
