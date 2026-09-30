@@ -16,7 +16,7 @@
     bitwarden-desktop
     btop
     claude-code
-    codex
+    inputs.nixpkgs-unstable.legacyPackages.${pkgs.system}.codex
     curl
     discord
     docker-client

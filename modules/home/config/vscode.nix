@@ -29,6 +29,19 @@
         ]
         ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
           {
+            name = "codex-audio";
+            publisher = "openai";
+            version = "26.917.62051";
+            sha256 = "sha256-dSHfrFPHFjbJdpx0E+iYRC42MXIA2cWJFOTrY0CalNU=";
+          }
+          {
+            name = "chatgpt";
+            publisher = "openai";
+            version = "26.5917.62051";
+            arch = "linux-x64";
+            sha256 = "sha256-+h29YniP63usFbyG4WWqHm8LVr5+NksXVDEO8dV25gw=";
+          }
+          {
             name = "sonokai";
             publisher = "sainnhe";
             version = "0.2.9";
