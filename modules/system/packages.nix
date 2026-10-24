@@ -25,7 +25,6 @@
     git
     glow
     google-chrome
-    inputs.grok-bot-flake.packages.${pkgs.system}.grok-bot
     imv
     jq
     kitty
