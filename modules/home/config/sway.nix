@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 
 let
   screenshotSave = pkgs.writeShellScript "screenshot-save" ''
@@ -43,27 +43,20 @@ let
       | ${pkgs.wl-clipboard}/bin/wl-copy --type image/png
   '';
 
-  dvpWorkspaceKeys = {
-    "ampersand" = "1";
-    "bracketleft" = "2";
-    "braceleft" = "3";
-    "braceright" = "4";
-    "parenleft" = "5";
-    "equal" = "6";
-    "asterisk" = "7";
-    "parenright" = "8";
-    "plus" = "9";
-    "bracketright" = "10";
-  };
-
+  # XKB keycodes 10–19 are the physical 1–0 row in all supported layouts.
   workspaceBinds = builtins.concatStringsSep "\n" (
     builtins.concatLists (
-      builtins.attrValues (
-        builtins.mapAttrs (key: ws: [
-          "bindsym Mod4+${key} workspace number ${ws}"
-          "bindsym Mod4+Mod1+${key} move container to workspace number ${ws}"
-        ]) dvpWorkspaceKeys
-      )
+      builtins.genList (
+        index:
+        let
+          key = toString (10 + index);
+          ws = toString (1 + index);
+        in
+        [
+          "bindcode Mod4+${key} workspace number ${ws}"
+          "bindcode Mod4+Mod1+${key} move container to workspace number ${ws}"
+        ]
+      ) 10
     )
   );
 in
@@ -81,7 +74,7 @@ in
         };
         "1:1:kanata" = {
           xkb_layout = "us";
-          xkb_variant = "dvp";
+          xkb_variant = if config.keyboard.variant == "qwerty" then "\"\"" else config.keyboard.variant;
         };
         "type:touchpad" = {
           natural_scroll = "enabled";
@@ -231,8 +224,6 @@ in
       gaps outer 0
       gaps inner 0
       ${workspaceBinds}
-      bindsym Mod4+dollar workspace number 1
-      bindsym Mod4+Mod1+dollar move container to workspace number 1
     '';
   };
 
