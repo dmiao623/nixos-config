@@ -28,6 +28,7 @@
     imv
     jq
     kitty
+    kooha
     lf
     nixfmt
     nixfmt-tree
@@ -37,6 +38,7 @@
     ripdrag
     slack
     ripgrep
+    shotcut
     spotify
     texlive.combined.scheme-medium
     unzip
